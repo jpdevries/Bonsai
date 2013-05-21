@@ -1,0 +1,183 @@
+@import "box-sizing";
+@import "font-awesome";
+@import "transition";
+@import "transform-rotate";
+
+* {
+	@include box-sizing();
+	
+}
+
+html,body {
+	height:100%;
+}
+
+body {
+	background:rgba(20,20,20,1);
+	padding:2em;
+	@media only screen and (max-width: 768px) {
+		padding:0; 
+	}
+}
+
+
+#wrapper {
+	height:100%;
+}
+
+.icon-file {
+	margin-left:7px;
+}
+
+.icon-chevron-sign-right  {
+	position:absolute;
+	right:0.25em;
+	bottom:0.6em;
+	font-size:120%;
+	display:none !important;
+}
+
+.bonsai {
+	font: 0.84em/1.4em "Helvetica Neue", Helvetica, Arial, sans-serif;
+	-webkit-font-smoothing: antialiased;
+	-webkit-text-stroke: 0.6px;
+	padding:1em 0.5em 0.5em 0.5em;
+	border:1px solid rgba(100,100,100,0.4);
+	max-width:300px;
+	height:100%;
+	overflow:scroll;
+	background:rgba(60,60,60,0.4);
+	color:rgba(180,180,180,1); 
+	font-weight:normal;
+	@include transition(all,320ms,ease-out);
+	&:hover {
+		background:rgba(60,60,60,0.48);
+		@include transition(all,420ms,ease-in);
+		border:1px solid rgba(100,100,100,0.8);
+	}
+
+	li {
+		overflow:hidden;
+		
+		&.folder {
+			> .section {
+				overflow: hidden;
+				max-height: 0px;
+				position: relative;
+				z-index: 10;
+				opacity:0; 
+				@include transition(opacity,240ms,ease-in);
+			}
+			&.open {
+				> a > i[class*="caret"] {
+					@include transform-rotate(90deg);
+				}
+				> .section {
+					max-height:none;
+					@include transition(opacity,240ms,ease-out);
+					opacity:1;
+				}
+			}
+		}
+	}
+	.section {
+		list-style-type:none;
+		padding:0 0 0 0.5em;
+		margin:0;
+		.section {
+			padding-left:0.5em;
+		}
+	}
+	a {
+		text-decoration:none;
+		color:inherit;
+		position:relative;
+		@include transition(all,320ms,ease-out);
+		&:hover {
+			color:rgba(253,253,253,0.99999);
+			i {
+				opacity:0.5;
+			}
+		}
+	}
+	i {
+		opacity:0.3;
+		margin-right:0.2em;
+		@include transition(all,320ms,ease-out);
+	}
+	
+	@media only screen and (max-width: 768px) {
+		.section, .section .section {
+			padding-left:0;
+		}
+		
+		.icon-chevron-sign-right {
+			display:inherit !important;
+			color:inherit;
+		}
+		
+		color:white;
+		 
+		i[class*="caret"] {
+			display:none;
+		}
+		
+		.icon-file {
+			margin-left:0;
+		}
+		
+		
+		a {
+			padding:0.42em;
+			display:block;
+			&:hover {
+				background:rgba(200,200,200,0.18);
+			}
+		}
+		
+		li { 
+			border-top:1px solid rgba(120,120,120,0.6);
+			
+			&.open {
+				> a {
+					font-weight:normal;
+					i:not(.icon-chevron-sign-right) {
+						opacity:1;
+					}
+					
+				}
+				li {
+					background:rgba(120,120,120,0.24);
+				}
+			}
+			&.folder.open, &.folder.open > a:hover {
+				background:rgba(20,20,20,0.48);
+				
+			}
+		}
+		
+		> .section {
+			> li {
+				&:last-of-type {
+					border-bottom:1px solid rgba(120,120,120,0.6);
+				}
+				&:first-of-type {
+					border-top:none;
+				}
+				
+			}
+			
+		}
+
+		font-size:1em;
+		line-height:1.8em;
+		padding:0;
+
+	}
+	
+	@media only screen and (max-width: 480px) {
+		max-width:none;
+		width:100%
+	}
+	
+}
