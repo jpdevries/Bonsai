@@ -8,21 +8,26 @@
 	
 }
 
-html,body {
-	height:100%;
+html {
+	height: 100%;
 }
 
 body {
-	background:rgba(20,20,20,1);
+	min-height:100%;
+}
+
+
+body {
+	background:rgba(20,20,20,1); 
 	padding:2em;
 	@media only screen and (max-width: 768px) {
 		padding:0; 
 	}
 }
 
-
+  
 #wrapper {
-	height:100%;
+	
 }
 
 .icon-file {
@@ -37,6 +42,34 @@ body {
 	display:none !important;
 }
 
+.no-touch {
+
+	.bonsai {
+		overflow:scroll;
+		min-height:100%;
+		&:hover {
+			background:rgba(60,60,60,0.48);
+			@include transition(all,420ms,ease-in);
+			border:1px solid rgba(100,100,100,0.8);
+		}
+		a {
+			&:hover {
+				color:rgba(253,253,253,0.99999);
+				i {
+					opacity:0.5;
+				}
+			}
+		}
+		@media only screen and (max-width: 768px) {
+			a {
+				&:hover {
+					background:rgba(200,200,200,0.18);
+				}
+			}
+		}
+	}  
+}
+
 .bonsai {
 	font: 0.84em/1.4em "Helvetica Neue", Helvetica, Arial, sans-serif;
 	-webkit-font-smoothing: antialiased;
@@ -44,17 +77,11 @@ body {
 	padding:1em 0.5em 0.5em 0.5em;
 	border:1px solid rgba(100,100,100,0.4);
 	max-width:300px;
-	height:100%;
-	overflow:scroll;
 	background:rgba(60,60,60,0.4);
 	color:rgba(180,180,180,1); 
 	font-weight:normal;
 	@include transition(all,320ms,ease-out);
-	&:hover {
-		background:rgba(60,60,60,0.48);
-		@include transition(all,420ms,ease-in);
-		border:1px solid rgba(100,100,100,0.8);
-	}
+
 
 	li {
 		overflow:hidden;
@@ -93,12 +120,7 @@ body {
 		color:inherit;
 		position:relative;
 		@include transition(all,320ms,ease-out);
-		&:hover {
-			color:rgba(253,253,253,0.99999);
-			i {
-				opacity:0.5;
-			}
-		}
+
 	}
 	i {
 		opacity:0.3;
@@ -107,6 +129,9 @@ body {
 	}
 	
 	@media only screen and (max-width: 768px) {
+		.no-touch .bonsai {
+			overflow: inherit;
+		}
 		.section, .section .section {
 			padding-left:0;
 		}
@@ -130,9 +155,7 @@ body {
 		a {
 			padding:0.42em;
 			display:block;
-			&:hover {
-				background:rgba(200,200,200,0.18);
-			}
+
 		}
 		
 		li { 
@@ -147,11 +170,11 @@ body {
 					
 				}
 				li {
-					background:rgba(120,120,120,0.24);
+					/* background:rgba(120,120,120,0.24); */
 				}
 			}
 			&.folder.open, &.folder.open > a:hover {
-				background:rgba(20,20,20,0.48);
+				background:rgba(20,20,20,0.48); 
 				
 			}
 		}
