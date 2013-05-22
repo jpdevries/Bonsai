@@ -10,6 +10,7 @@
 
 html {
 	height: 100%;
+	background:rgba(20,20,20,1); 
 }
 
 body {
@@ -18,7 +19,7 @@ body {
 
 
 body {
-	background:rgba(20,20,20,1); 
+	
 	padding:2em;
 	@media only screen and (max-width: 768px) {
 		padding:0; 
@@ -27,12 +28,10 @@ body {
 
   
 #wrapper {
-	
+
 }
 
-.icon-file {
-	margin-left:7px;
-}
+
 
 .icon-chevron-sign-right  {
 	position:absolute;
@@ -43,7 +42,13 @@ body {
 }
 
 .no-touch {
-
+	body {
+		min-height:auto;
+		height:100%;
+	}
+	#wrapper {
+		height:100%; 
+	}
 	.bonsai {
 		overflow:scroll;
 		min-height:100%;
@@ -98,6 +103,8 @@ body {
 			&.open {
 				> a > i[class*="caret"] {
 					@include transform-rotate(90deg);
+					
+					
 				}
 				> .section {
 					max-height:none;
@@ -109,10 +116,10 @@ body {
 	}
 	.section {
 		list-style-type:none;
-		padding:0 0 0 0.5em;
+		padding:0;
 		margin:0;
 		.section {
-			padding-left:0.5em;
+			padding-left:0.667em;
 		}
 	}
 	a {
@@ -126,14 +133,43 @@ body {
 		opacity:0.3;
 		margin-right:0.2em;
 		@include transition(all,320ms,ease-out);
+		&.icon-filetype {
+			margin-right:7px;
+			margin-left:9px;
+		}
+		&.icon-folder-close-alt {
+			margin-left:9px;
+		}
+	}
+	i[class*="caret"] {
+		margin-right:4px;
+		display:inline-block;
+	}
+	i[class*="folder"] {
+		min-width:14px;
+		display:inline-block;
 	}
 	
 	@media only screen and (max-width: 768px) {
 		.no-touch .bonsai {
 			overflow: inherit;
+			/* min-height:auto; */
+		}
+		#wrapper {
+			height:auto;
 		}
 		.section, .section .section {
 			padding-left:0;
+		}
+		.icon-doctype {
+			position:absolute;
+			top:0.8em;
+			left:0.333em;
+			&.icon-filetype {
+				left:0.3667em;
+				margin-left:0;
+				margin-right:0;
+			}
 		}
 		
 		.icon-chevron-sign-right {
@@ -146,17 +182,67 @@ body {
 		i[class*="caret"] {
 			display:none;
 		}
-		
-		.icon-file {
+		i.icon-folder-close-alt {
 			margin-left:0;
+		}
+		
+		.icon-filetype {
+
 		}
 		
 		
 		a {
-			padding:0.42em;
+			padding:0.42em 0.42em 0.42em 1.62em;
 			display:block;
-
 		}
+		
+		li {
+			li {
+				a:after {
+					content:" ";
+					border-top:1px dotted grey;
+					display:block;
+					position:absolute;
+					bottom:-0.22em;
+					right:2.2em;
+					width:4px;
+					height:10px;
+				}
+				
+				/* start tiny dots */
+				li {
+					a:after { width:8px; }
+					li {
+						a:after { width:12px; }
+						li {
+							a:after { width:16px; }
+							li {
+								a:after { width:20px; }
+								li {
+									a:after { width:24px; }
+									li {
+										a:after { width:28px; }
+										li {
+											a:after { width:32px; }
+											li {
+												a:after { width:36px; }
+													li {
+														a:after { width:40px; }
+														li {
+															a:after { width:44px; }
+														}
+													}
+												}
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+				/* end tiny dots */
+			}
 		
 		li { 
 			border-top:1px solid rgba(120,120,120,0.6);
@@ -170,10 +256,10 @@ body {
 					
 				}
 				li {
-					/* background:rgba(120,120,120,0.24); */
+					 /* background:rgba(120,120,120,0.24);  */
 				}
 			}
-			&.folder.open, &.folder.open > a:hover {
+			&.folder.open, &.folder.open /* > a:hover */ {
 				background:rgba(20,20,20,0.48); 
 				
 			}
@@ -203,4 +289,14 @@ body {
 		width:100%
 	}
 	
+}
+
+@media only screen and (max-width: 768px) {
+	html {
+		min-height:100%;
+		height:auto;
+	}
+	body {
+		height:auto;
+	}
 }

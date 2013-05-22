@@ -1269,20 +1269,17 @@ ul.icons-ul > li .icon-li {
   box-sizing: border-box; }
 
 html {
-  height: 100%; }
+  height: 100%;
+  background: #141414; }
 
 body {
   min-height: 100%; }
 
 body {
-  background: #141414;
   padding: 2em; }
   @media only screen and (max-width: 768px) {
     body {
       padding: 0; } }
-
-.icon-file {
-  margin-left: 7px; }
 
 .icon-chevron-sign-right {
   position: absolute;
@@ -1291,6 +1288,11 @@ body {
   font-size: 120%;
   display: none !important; }
 
+.no-touch body {
+  min-height: auto;
+  height: 100%; }
+.no-touch #wrapper {
+  height: 100%; }
 .no-touch .bonsai {
   overflow: scroll;
   min-height: 100%; }
@@ -1350,10 +1352,10 @@ body {
       opacity: 1; }
   .bonsai .section {
     list-style-type: none;
-    padding: 0 0 0 0.5em;
+    padding: 0;
     margin: 0; }
     .bonsai .section .section {
-      padding-left: 0.5em; }
+      padding-left: 0.667em; }
   .bonsai a {
     text-decoration: none;
     color: inherit;
@@ -1369,6 +1371,17 @@ body {
     -moz-transition: all 320ms ease-out;
     -o-transition: all 320ms ease-out;
     transition: all 320ms ease-out; }
+    .bonsai i.icon-filetype {
+      margin-right: 7px;
+      margin-left: 9px; }
+    .bonsai i.icon-folder-close-alt {
+      margin-left: 9px; }
+  .bonsai i[class*="caret"] {
+    margin-right: 4px;
+    display: inline-block; }
+  .bonsai i[class*="folder"] {
+    min-width: 14px;
+    display: inline-block; }
   @media only screen and (max-width: 768px) {
     .bonsai {
       color: white;
@@ -1376,19 +1389,63 @@ body {
       line-height: 1.8em;
       padding: 0; }
       .bonsai .no-touch .bonsai {
-        overflow: inherit; }
+        overflow: inherit;
+        /* min-height:auto; */ }
+      .bonsai #wrapper {
+        height: auto; }
       .bonsai .section, .bonsai .section .section {
         padding-left: 0; }
+      .bonsai .icon-doctype {
+        position: absolute;
+        top: 0.8em;
+        left: 0.333em; }
+        .bonsai .icon-doctype.icon-filetype {
+          left: 0.3667em;
+          margin-left: 0;
+          margin-right: 0; }
       .bonsai .icon-chevron-sign-right {
         display: inherit !important;
         color: inherit; }
       .bonsai i[class*="caret"] {
         display: none; }
-      .bonsai .icon-file {
+      .bonsai i.icon-folder-close-alt {
         margin-left: 0; }
       .bonsai a {
-        padding: 0.42em;
+        padding: 0.42em 0.42em 0.42em 1.62em;
         display: block; }
+      .bonsai li {
+        /* end tiny dots */ }
+        .bonsai li li {
+          /* start tiny dots */ }
+          .bonsai li li a:after {
+            content: " ";
+            border-top: 1px dotted grey;
+            display: block;
+            position: absolute;
+            bottom: -0.22em;
+            right: 2.2em;
+            width: 4px;
+            height: 10px; }
+          .bonsai li li li a:after {
+            width: 8px; }
+          .bonsai li li li li a:after {
+            width: 12px; }
+          .bonsai li li li li li a:after {
+            width: 16px; }
+          .bonsai li li li li li li a:after {
+            width: 20px; }
+          .bonsai li li li li li li li a:after {
+            width: 24px; }
+          .bonsai li li li li li li li li a:after {
+            width: 28px; }
+          .bonsai li li li li li li li li li a:after {
+            width: 32px; }
+          .bonsai li li li li li li li li li li a:after {
+            width: 36px; }
+          .bonsai li li li li li li li li li li li a:after {
+            width: 40px; }
+          .bonsai li li li li li li li li li li li li a:after {
+            width: 44px; }
       .bonsai li {
         border-top: 1px solid rgba(120, 120, 120, 0.6); }
         .bonsai li.open > a {
@@ -1396,8 +1453,8 @@ body {
           .bonsai li.open > a i:not(.icon-chevron-sign-right) {
             opacity: 1; }
         .bonsai li.open li {
-          /* background:rgba(120,120,120,0.24); */ }
-        .bonsai li.folder.open, .bonsai li.folder.open > a:hover {
+          /* background:rgba(120,120,120,0.24);  */ }
+        .bonsai li.folder.open, .bonsai li.folder.open {
           background: rgba(20, 20, 20, 0.48); }
       .bonsai > .section > li:last-of-type {
         border-bottom: 1px solid rgba(120, 120, 120, 0.6); }
@@ -1407,3 +1464,11 @@ body {
     .bonsai {
       max-width: none;
       width: 100%; } }
+
+@media only screen and (max-width: 768px) {
+  html {
+    min-height: 100%;
+    height: auto; }
+
+  body {
+    height: auto; } }
