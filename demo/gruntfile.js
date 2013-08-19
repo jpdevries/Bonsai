@@ -51,8 +51,19 @@ module.exports = function(grunt) {
 			dest: 'assets/js/vendor/requirejs.js'
 		}
 	},
+	asciify:{
+		myBanner: {
+			options:{
+				font:'larry3d'
+			},
+			text: 'bonsai'
+		}
+	},
 	concat: { /* concatenate javascript */
 		script: {
+			options:{
+				banner: '/*!\n <%= asciify_myBanner %> \n*/\n'
+			},
 			files: {
 				'assets/js/main-dev.js' : ['assets/js/plugins.js','assets/js/vendor/json2html.js','assets/js/vendor/jquery.json2html.js','assets/js/vendor/bonsai.js','assets/js/main.js'] 
 			}
@@ -68,7 +79,7 @@ module.exports = function(grunt) {
 	},
     uglify: { /* minify javascript */
       options: {
-        banner: ''
+        banner: '/*!\n <%= asciify_myBanner %> \n*/\n'
       },
       build: {
         //src: 'src/<%= pkg.name %>.js',
@@ -132,11 +143,11 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks( 'grunt-contrib-concat' );
   grunt.loadNpmTasks( 'grunt-contrib-uglify' );
   grunt.loadNpmTasks('grunt-cleanx');
+  grunt.loadNpmTasks('grunt-asciify');
   //grunt.loadNpmTasks( 'grunt-notify' );
 
   // Tasks
-
   grunt.registerTask('default', ['sass:dev','concat','uglify','watch']);
-  grunt.registerTask('build', ['bowerInstall','bower','rename','copy','sass:dev','concat','uglify','clean']);
+  grunt.registerTask('build', ['bowerInstall','bower','rename','copy','sass:dev','asciify','concat','uglify','clean']);
   grunt.registerTask('prod',['sass:dist','concat','uglify']);
 };
