@@ -1,0 +1,7 @@
+@mixin box-sizing( $type: border-box, $postfix:'' ) {
+	-webkit-box-sizing: $type $postfix;
+	   -moz-box-sizing: $type $postfix;
+	     -o-box-sizing: $type $postfix;
+	    -ms-box-sizing: $type $postfix;
+	        box-sizing: $type $postfix;
+}

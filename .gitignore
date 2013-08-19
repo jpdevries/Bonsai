@@ -1,2 +1,8 @@
 # Include your project-specific ignores in this file
 # Read about how to use .gitignore: https://help.github.com/articles/ignoring-files
+
+bower_components
+node_modules
+.DS_Store
+demo/assets/sass/bourbon
+demo/sources/
