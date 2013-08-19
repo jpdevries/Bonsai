@@ -3,7 +3,9 @@ Bonsai
 
 Responsive jQuery Tree
 
-## Requirements
+## Contributing Requirements
+bonsai uses grunt.js because it's smart. Here's how to get going with it.
+
 ### node.js and npm
 _Note: If you haven't already you'll first need to [setup node.js and npm](http://shapeshed.com/setting-up-nodejs-and-npm-on-mac-osx/)._  
 If you are using [homebrew](http://github.com/mxcl/homebrew) you can setup node.js and npm with these commands:
