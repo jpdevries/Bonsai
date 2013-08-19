@@ -54,7 +54,7 @@ module.exports = function(grunt) {
 	concat: { /* concatenate javascript */
 		script: {
 			files: {
-				'assets/js/main.dev.js' : ['assets/js/plugins.js','assets/js/vendor/json2html.js','assets/js/vendor/jquery.json2html.js','assets/js/vendor/bonsai.js','assets/js/vendor/main-min.js'] 
+				'assets/js/main-dev.js' : ['assets/js/plugins.js','assets/js/vendor/json2html.js','assets/js/vendor/jquery.json2html.js','assets/js/vendor/bonsai.js','assets/js/main.js'] 
 			}
 		}
 	},
@@ -73,7 +73,7 @@ module.exports = function(grunt) {
       build: {
         //src: 'src/<%= pkg.name %>.js',
         //dest: 'build/<%= pkg.name %>.min.js'
-		src: 'assets/js/main.dev.js',
+		src: 'assets/js/main-dev.js',
 		dest: 'assets/js/main-min.js'
       }
     },
@@ -107,17 +107,13 @@ module.exports = function(grunt) {
 			livereload: true
 		},
 		scss: {
-			files: 'sass/*',
+			files: 'assets/sass/*.scss',  
 			tasks: ['sass:dev']
 		},
-		/*script: {
+		script: {
 			files: [ 'assets/js/main.js', 'assets/js/plugins.js' ],
 			tasks: [ 'concat:script','uglify' ]
-		},*/
-		/*uglify: {
-			files: 'assets/js/main.js',
-			tasks: [ 'uglify' ]
-		}*/
+		}
 	},
 	clean: {  /* take out the trash  */
 		buildLib: {
@@ -140,7 +136,7 @@ module.exports = function(grunt) {
 
   // Tasks
 
-  grunt.registerTask('default', ['sass:dev','watch']);
+  grunt.registerTask('default', ['sass:dev','concat','uglify','watch']);
   grunt.registerTask('build', ['bowerInstall','bower','rename','copy','sass:dev','concat','uglify','clean']);
   grunt.registerTask('prod',['sass:dist','concat','uglify']);
 };

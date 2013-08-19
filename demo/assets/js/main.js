@@ -19,9 +19,9 @@ var data = [
     {'name':'Bob','age':40,'children':[
     	{'name':'John','age':23}
     ]}
-];
+];  
 	    
-	$("#wrapper").json2html(data,transform); 
+	//$("#wrapper").json2html(data,transform); 
 
 
 	$('.bonsai').bonsai();
