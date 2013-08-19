@@ -96,5 +96,14 @@ To prepare the project for production by compiling the Sass, concatenating and m
 
     grunt prod
     
+### best practices
+Run the build task before commiting so we are all checking in pre-processed files in the same state.
+
+    grunt build
+    
+Run the prod task before pushing to production and tagging releases.
+
+    grunt prod
+    
 
 
