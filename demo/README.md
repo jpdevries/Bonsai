@@ -22,7 +22,7 @@ If you haven't used [Grunt](http://gruntjs.com/) before, be sure to check out th
 	npm install -g grunt-cli
 
 ### using grunt tasks
-To fetch and update all project dependencies, move libraries into place, compile the Sass, and concatenate and minify the JavaScript:
+To fetch and update all [project dependencies](https://github.com/jpdevries/Bonsai/blob/master/demo/bower.json), move libraries into place, compile the Sass, and concatenate and minify the JavaScript:
 
     grunt build
 
@@ -34,6 +34,5 @@ To prepare the project for production by compiling the Sass, concatenating and m
 
     grunt prod
     
-
 
 
