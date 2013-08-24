@@ -3,13 +3,15 @@
 
 # TEAM
 
-    <name> -- <role> -- <twitter>
+    JP DeVries -- Lead Designer, Lead Developer -- @jpdevries
 
 # THANKS
 
-    <name>
+    jQuery
+    Tennesee Tech University
+    Nate Bedortha
 
 # TECHNOLOGY COLOPHON
 
     HTML5, CSS3
-    Normalize.css, jQuery, Modernizr
+    jQuery, Modernizr
