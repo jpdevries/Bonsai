@@ -1,4 +1,4 @@
-Bonsai
+bonsai.js
 ======
 
 Responsive jQuery tree for you and for me
