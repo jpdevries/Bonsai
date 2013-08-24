@@ -127,7 +127,7 @@ module.exports = function(grunt) {
 			tasks: ['sass:dev']
 		},
 		script: {
-			files: [ './assets/js/bonsai.js', './assets/js/plugins.js' ],
+			files: [ './assets/js/main.js', './assets/js/plugins.js', './assets/js/vendor/bonsai.js' ],
 			tasks: [ 'concat:script','uglify' ]
 		}
 	},

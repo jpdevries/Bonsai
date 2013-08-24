@@ -1,14 +1,5 @@
 /*!
-  __                                                  
-/\ \                                           __    
-\ \ \____    ___     ___      ____     __     /\_\   
- \ \ '__`\  / __`\ /' _ `\   /',__\  /'__`\   \/\ \  
-  \ \ \L\ \/\ \L\ \/\ \/\ \ /\__, `\/\ \L\.\_  \ \ \ 
-   \ \_,__/\ \____/\ \_\ \_\\/\____/\ \__/.\_\  \ \_\
-    \/___/  \/___/  \/_/\/_/ \/___/  \/__/\/_/   \/_/
-                                                     
-                                                     
- 
+  
 */
 // Avoid `console` errors in browsers that lack a console.
 (function() {
@@ -463,52 +454,82 @@ var json2html = {
 })(jQuery);
 
 // BonsaiLeaf class, holds a name and one or more UPCDTO objects
-var BonsaiLeaf = function(_name, _props, _branches) {
-	this.name = _name;
-	this.props = _props;
-	this.branches = _branches;
-};
+// http://stefangabos.ro/jquery/jquery-plugin-boilerplate-oop/
+// 
+;(function($) {
 
-$.extend(BonsaiLeaf.prototype,{
-	// provided a size, returns the associated UPC barcode
-	getBranch:function(_name) {
-		var _branches = this.branches;
-		var l = _branches.length;
-		for(var i = 0; i < l; i++) {
-			var _u = _branches[i];
-			if(_u.name == _name) return _u;
-		}
-		return null; 
-	},html:function(_s){
-		$.each(this.branches,function(i,v){
-			_s += v.html(_s);
-		});
-		return _s;
-	},
-	toString:function() {
-		return "name: " + this.name + " branches: " + this.branches;
-	}
-});
+    $.bonsai = function(el, options) {
 
-$.fn.bonsai = function(options) {
-	$.fn.bonsai.defaults = {							// default properties
+	var defaults = {							// default properties
 		data:[],
-		/*cues:[],
+		folderClass:'folder',
+		folderIconClass:'',
+		folderIconOpenClass:'',
+		folderIconCloseClass:''
+
+		/*
 		handleCue:function(_cue) {
 		}*/
 	};
-	
-	// merge the provided options with the default options
-	$.fn.bonsai.bonsaiOpts = $.extend({}, $.fn.bonsai.defaults, options);
-	var _data = $.fn.bonsai.bonsaiOpts.data;
-	
-	var _html = $('<ul class="section"></ul>');
-/*
+
+
+	var BonsaiLeaf = function(_name, _props, _branches) {
+		this.name = _name;
+		this.props = _props;
+		this.branches = _branches;
+	};
+
+	$.extend(BonsaiLeaf.prototype,{
+		// provided a size, returns the associated UPC barcode
+		getBranch:function(_name) {
+			var _branches = this.branches;
+			var l = _branches.length;
+			for(var i = 0; i < l; i++) {
+				var _u = _branches[i];
+				if(_u.name == _name) return _u;
+			}
+			return null; 
+		},html:function(_s){
+			$.each(this.branches,function(i,v){
+				_s += v.html(_s);
+			});
+			return _s;
+		},
+		toString:function() {
+			return "name: " + this.name + " branches: " + this.branches;
+		}
+	});
+
+
+	var plugin = this;
+
+	plugin.settings = {}
+
+	var init = function() { 
+		// merge the provided options with the default options
+		plugin.settings = $.extend({},defaults, options);
+		plugin.el = el; 
+
+		var _data = plugin.settings.data;
+		var _html = $('<ul class="section"></ul>');
+	}   
+
+    plugin.foo_public_method = function() {
+        // code goes here
+    }
+
+    var foo_private_method = function() {
+        // code goes here
+    }
+
+	init();
+
+	/*
 	var l = _data.length;
 	for(var i = 0; i < l; i++) {
 		growBranches(_data[i]);
 	}
-*/
+	*/
 	/*$.each(_data,function(i,v){
 		growBranches(v);
 	});
@@ -520,9 +541,9 @@ $.fn.bonsai = function(options) {
 			growBranches(_data.branches[i]);
 		}
 	}*/
-	
-	return this.each(function() {
-		$(this).find('.folder').each(function(){
+
+	return plugin.el.each(function() {
+		$(this).find('.' + plugin.settings.folderClass).each(function(){
 			$(this).children('a').click(function(e){
 				e.preventDefault(); // chill out 
 				$(this).parent().toggleClass('open'); // toggle it
@@ -535,7 +556,11 @@ $.fn.bonsai = function(options) {
 		});
 		return $(this);
 	});
-};
+
+
+    }
+
+})(jQuery);
 //@codekit-prepend "vendor/json2html.js";
 //@codekit-prepend "vendor/jquery.json2html.js";
 //@codekit-prepend "vendor/bonsai.js";
@@ -595,5 +620,13 @@ $(document).ready(function(){
 		]});
 
 
-	$('.bonsai').bonsai(); 
+	//$('.bonsai').bonsai(); 
+    // create a new instance of the plugin
+    var myplugin = new $.bonsai($('.bonsai'));
+
+    // call a public method
+    //myplugin.foo_public_method();
+
+    // get the value of a public property
+    //myplugin.settings.property;
 });  
