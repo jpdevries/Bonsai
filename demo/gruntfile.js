@@ -47,7 +47,7 @@ module.exports = function(grunt) {
 		},
 		requirejs: {
 			src: './lib/requirejs/require.js',
-			dest: './assets/js/vendor/requirejs/require.js'
+			dest: './assets/js/vendor/require.js'
 		},
 		bourbon: {
 			src: './lib/bourbon/',
@@ -104,7 +104,8 @@ module.exports = function(grunt) {
 				outputStyle: 'compressed'
 			},
 			files: {
-				'./assets/css/main.css' : './assets/sass/main.scss'
+				'./assets/css/bonsai.min.css' : './assets/sass/bonsai.scss',
+				'./assets/css/demo.css' : './assets/sass/demo.scss'
 			}
 		},
 		dev: {
@@ -112,7 +113,8 @@ module.exports = function(grunt) {
 				outputStyle: 'expanded'
 			},
 			files: {
-				'./assets/css/main.css' : './assets/sass/main.scss'
+				'./assets/css/bonsai.css' : './assets/sass/bonsai.scss',
+				'./assets/css/demo.css' : './assets/sass/demo.scss'
 			}
 		} 
 	},
@@ -125,12 +127,23 @@ module.exports = function(grunt) {
 			tasks: ['sass:dev']
 		},
 		script: {
-			files: [ './assets/js/main.js', './assets/js/plugins.js' ],
+			files: [ './assets/js/bonsai.js', './assets/js/plugins.js' ],
 			tasks: [ 'concat:script','uglify' ]
 		}
 	},
 	clean: {  /* take out the trash  */
-		build:['lib']
+		build:['lib'],
+		prebuild:['./assets/sass/bourbon/']
+	},
+	growl:{
+		sass : {
+			message : "Sass files created",
+			title : "grunt"
+		},
+		build : {
+			title : "grunt",
+			message : "Build complete"
+		}
 	}
   });
 
@@ -145,10 +158,11 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks( 'grunt-contrib-uglify' );
   grunt.loadNpmTasks('grunt-contrib-clean');
   grunt.loadNpmTasks('grunt-asciify');
+  grunt.loadNpmTasks('grunt-growl');
   //grunt.loadNpmTasks( 'grunt-notify' );
 
   // Tasks
   grunt.registerTask('default', ['sass:dev','concat','uglify','watch']);
-  grunt.registerTask('build', ['bower','rename','copy','sass:dev','asciify','concat','uglify','clean']);
+  grunt.registerTask('build', ['clean:prebuild','bower','rename','copy','sass:dev','growl:sass','asciify','concat','uglify','clean:build','growl:build']);
   grunt.registerTask('prod',['sass:dist','concat','uglify']);
 };

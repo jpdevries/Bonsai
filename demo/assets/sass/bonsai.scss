@@ -3,31 +3,7 @@
 @import "bourbon/bourbon";
 
 * {
-	@include box-sizing(border-box);
-	
-}
-
-html {
-	height: 100%;
-	background:rgba(20,20,20,1); 
-}
-
-body {
-	min-height:100%;
-}
-
-
-body {
-	color:white;
-	padding:2em;
-	@media only screen and (max-width: 768px) {
-		padding:0; 
-	}
-}
-
-  
-#wrapper {
-
+	@include box-sizing(border-box); /* dangerous, this is gonna have to be .bonsai * */	
 }
 
 
@@ -208,7 +184,7 @@ body {
 					height:10px;
 				}
 				
-				/* start tiny dots */
+				/* start tiny dots - if this is a keeper, use a sass loop and consider making a component */
 				li {
 					a:after { width:8px; }
 					li {
@@ -290,12 +266,3 @@ body {
 	
 }
 
-@media only screen and (max-width: 768px) {
-	html {
-		min-height:100%;
-		height:auto;
-	}
-	body {
-		height:auto;
-	}
-}

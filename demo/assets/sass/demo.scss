@@ -1,0 +1,25 @@
+@import "bourbon/bourbon";
+
+html {
+	height: 100%;
+	background:rgba(20,20,20,1); 
+}
+
+body {
+	min-height:100%;
+	color:white;
+	padding:2em;
+	@media only screen and (max-width: 768px) {
+		padding:0; 
+	}
+}
+
+@media only screen and (max-width: 768px) {
+	html {
+		min-height:100%;
+		height:auto;
+	}
+	body {
+		height:auto;
+	}
+}

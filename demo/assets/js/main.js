@@ -19,7 +19,7 @@ $(document).ready(function(){
 		//Transforms
 
         var transforms = {
-	        
+	         
 			'barChart': [
 		        
 					{"tag":"ul","class":"barChart", "children":function() {return(json2html.transform(this.groups,transforms.barChartNode));}}
@@ -36,14 +36,8 @@ $(document).ready(function(){
     	
 
     	 //Callback Function
-         function getBarChart(json)
-
-		 {
-	        
-			if(json !== undefined )
-
-				$('#chart').json2html(json, transforms.barChart);
-
+        function getBarChart(json) {
+				//if(json !== undefined ) $('#chart').json2html(json, transforms.barChart);
 		}
 
 		getBarChart({'groups':[
@@ -63,5 +57,5 @@ $(document).ready(function(){
 		]});
 
 
-	//$('.bonsai').bonsai();
+	$('.bonsai').bonsai(); 
 });  
