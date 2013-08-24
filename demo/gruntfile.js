@@ -123,12 +123,12 @@ module.exports = function(grunt) {
 			livereload: true
 		},
 		scss: {
-			files: './assets/sass/*.scss',  
-			tasks: ['sass:dev']
+			files: './assets/sass/**/*.scss',  
+			tasks: ['sass:dev','growl:sass']
 		},
 		script: {
 			files: [ './assets/js/main.js', './assets/js/plugins.js', './assets/js/vendor/bonsai.js' ],
-			tasks: [ 'concat:script','uglify' ]
+			tasks: [ 'asciify','concat:script','uglify','growl:js' ]
 		}
 	},
 	clean: {  /* take out the trash  */
@@ -138,6 +138,10 @@ module.exports = function(grunt) {
 	growl:{
 		sass : {
 			message : "Sass files created",
+			title : "grunt"
+		},
+		js : {
+			message : "JavaScript files minified",
 			title : "grunt"
 		},
 		build : {

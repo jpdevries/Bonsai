@@ -1,5 +1,14 @@
 /*!
-  
+  __                                                  
+/\ \                                           __    
+\ \ \____    ___     ___      ____     __     /\_\   
+ \ \ '__`\  / __`\ /' _ `\   /',__\  /'__`\   \/\ \  
+  \ \ \L\ \/\ \L\ \/\ \/\ \ /\__, `\/\ \L\.\_  \ \ \ 
+   \ \_,__/\ \____/\ \_\ \_\\/\____/\ \__/.\_\  \ \_\
+    \/___/  \/___/  \/_/\/_/ \/___/  \/__/\/_/   \/_/
+                                                     
+                                                     
+ 
 */
 // Avoid `console` errors in browsers that lack a console.
 (function() {
@@ -491,7 +500,7 @@ var json2html = {
 				$.each(this.branches,function(i,v){
 					_s += v.html(_s);
 				});
-				return _s;
+				return _s; 
 			},
 			toString:function() {
 				return "name: " + this.name + " branches: " + this.branches;
@@ -572,7 +581,7 @@ $(document).ready(function(){
 
 
 
-
+ 
 
 		//Transforms
 
@@ -615,9 +624,8 @@ $(document).ready(function(){
 		]});
 
 
-	//$('.bonsai').bonsai(); 
-    // create a new instance of the plugin
-    var myplugin = new $.bonsai($('.bonsai'));
+    // create a new bonsai
+    var mytree = new $.bonsai($('.bonsai'));
 
     // call a public method
     //myplugin.foo_public_method();

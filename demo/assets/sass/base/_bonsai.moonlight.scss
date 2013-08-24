@@ -1,17 +1,25 @@
+$borderColor:rgba(100,100,100,0.4);
+$bg:rgba(60,60,60,0.4);
+$color:rgba(180,180,180,1);
+$dotColor:grey;
+$borderTopColor:rgba(120,120,120,0.6);
+$borderBottomColor:rgba(120,120,120,0.6);
+$hoverColor:rgba(20,20,20,0.48);
+$bgHighlight:rgba(60,60,60,0.48);
+$borderTopHover:rgba(100,100,100,0.8);
+$colorHover:rgba(253,253,253,0.99999);
+$hoverOpacity:0.5;
+$iconOpacity:0.3;
+
 .bonsai {
-	font: 0.84em/1.4em "Helvetica Neue", Helvetica, Arial, sans-serif;
-	-webkit-font-smoothing: antialiased;
-	-webkit-text-stroke: 0.6px;
-	border:1px solid rgba(100,100,100,0.4);
-	background:rgba(60,60,60,0.4);
-	color:rgba(180,180,180,1); 
+	@extend %smooth-sans-serif;
+	border:1px solid $borderColor;
+	background:$bg;
+	color:$color; 
 	font-weight:normal;
 	@include transition(all,320ms,ease-out);
-
-
 	li {
-		overflow:hidden;
-		
+		overflow:hidden;	
 		&.folder {
 			> .section {
 				opacity:0; 
@@ -19,12 +27,12 @@
 			}
 			&.open {
 				> a > i[class*="caret"] {
-					@include transform-rotate(90deg);
+					@include transform(rotate(90deg)); 
 				}
 				> .section {
 					@include transition(opacity,240ms,ease-out);
 					opacity:1;
-				}
+				} 
 			}
 		}
 	}
@@ -37,7 +45,7 @@
 
 	}
 	i {
-		opacity:0.3;
+		opacity:$iconOpacity;
 		@include transition(all,320ms,ease-out);
 	}
 	
@@ -47,7 +55,7 @@
 			li {
 				a:after {
 					content:" ";
-					border-top:1px dotted grey;
+					border-top:1px dotted $dotColor;
 					display:block;
 					position:absolute;
 					bottom:-0.22em;
@@ -92,7 +100,7 @@
 			}
 		
 		li { 
-			border-top:1px solid rgba(120,120,120,0.6);
+			border-top:1px solid $borderTopColor;
 			
 			&.open {
 				> a {
@@ -100,27 +108,24 @@
 					i:not(.icon-chevron-sign-right) {
 						opacity:1;
 					}
-					
 				}
 				li {
 					 /* background:rgba(120,120,120,0.24);  */
 				}
 			}
 			&.folder.open, &.folder.open /* > a:hover */ {
-				background:rgba(20,20,20,0.48); 
-				
+				background:$hoverColor; 	
 			}
 		}
 		
 		> .section {
 			> li {
 				&:last-of-type {
-					border-bottom:1px solid rgba(120,120,120,0.6);
+					border-bottom:1px solid $borderBottomColor;
 				}
 				&:first-of-type {
 					border-top:none;
 				}
-				
 			}
 			
 		}
@@ -139,15 +144,15 @@
 .no-touch {
 	.bonsai { 
 		&:hover {
-			background:rgba(60,60,60,0.48);
+			background:$bgHighlight;
 			@include transition(all,420ms,ease-in);
-			border:1px solid rgba(100,100,100,0.8);
+			border:1px solid $borderTopHover;
 		}
 		a {
 			&:hover {
-				color:rgba(253,253,253,0.99999);
+				color:$colorHover;
 				i {
-					opacity:0.5;
+					opacity:$hoverOpacity;
 				}
 			}
 		}

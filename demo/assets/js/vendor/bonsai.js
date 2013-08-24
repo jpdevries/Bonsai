@@ -36,7 +36,7 @@
 				$.each(this.branches,function(i,v){
 					_s += v.html(_s);
 				});
-				return _s;
+				return _s; 
 			},
 			toString:function() {
 				return "name: " + this.name + " branches: " + this.branches;

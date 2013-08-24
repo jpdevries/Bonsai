@@ -1,0 +1,12 @@
+@import "vars";
+@import "mixins";
+
+%sans-serif {
+	font: 0.84em/1.4em "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+%smooth-sans-serif {
+	@extend %smooth-sans-serif;
+	-webkit-font-smoothing: antialiased;
+	-webkit-text-stroke: 0.6px;
+}

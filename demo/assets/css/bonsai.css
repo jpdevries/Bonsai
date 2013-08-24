@@ -1401,6 +1401,14 @@ a .icon-rotate-90:before, a .icon-rotate-180:before, a .icon-rotate-270:before, 
 .icon-renren:before {
   content: "\f18b"; }
 
+/* icon font dependency */
+/* a little bourbon never hurt anybody */
+
+%smooth-sans-serif, .bonsai {
+  -webkit-font-smoothing: antialiased;
+  -webkit-text-stroke: 0.6px; }
+
+/* global directory contains all of your non-printing styles. This allows for a single folder that can bootsrap any new stylesheet. You should be able to reskin an entire website by updating the variables and Extend directories */
 .bonsai, .bonsai * {
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
@@ -1473,6 +1481,7 @@ a .icon-rotate-90:before, a .icon-rotate-180:before, a .icon-rotate-270:before, 
   overflow: scroll;
   min-height: 100%; }
 
+/* by seperating layout from style you ensure adherence to a consistent grid and set the foundation for a responsive layout */
 .no-touch body {
   min-height: auto;
   height: 100%; }
@@ -1486,10 +1495,15 @@ a .icon-rotate-90:before, a .icon-rotate-180:before, a .icon-rotate-270:before, 
   font-size: 120%;
   display: none !important; }
 
+a {
+  text-decoration: none; }
+
+a:visited, a:active, a {
+  color: inherit; }
+
+/* base directory contains all of the visual styles that are not layout or are specific to a component */
+/* components are standalone, resuable, and have no knowledge of their parent container. A naked component partial is merely a collection of the DOM elements in that component. If done properly, each component should be a list of extends, mixins, and vertical rhythm */
 .bonsai {
-  font: 0.84em/1.4em "Helvetica Neue", Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -webkit-text-stroke: 0.6px;
   border: 1px solid rgba(100, 100, 100, 0.4);
   background: rgba(60, 60, 60, 0.4);
   color: #b4b4b4;
@@ -1592,3 +1606,5 @@ a .icon-rotate-90:before, a .icon-rotate-180:before, a .icon-rotate-270:before, 
 @media only screen and (max-width: 768px) {
   .no-touch .bonsai a:hover {
     background: rgba(200, 200, 200, 0.18); } }
+
+/* the bonsai theme of our choice */

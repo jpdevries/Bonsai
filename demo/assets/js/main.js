@@ -14,7 +14,7 @@ $(document).ready(function(){
 
 
 
-
+ 
 
 		//Transforms
 
@@ -57,9 +57,8 @@ $(document).ready(function(){
 		]});
 
 
-	//$('.bonsai').bonsai(); 
-    // create a new instance of the plugin
-    var myplugin = new $.bonsai($('.bonsai'));
+    // create a new bonsai
+    var mytree = new $.bonsai($('.bonsai'));
 
     // call a public method
     //myplugin.foo_public_method();
