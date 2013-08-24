@@ -1,7 +1,9 @@
 Bonsai
 ======
 
-Responsive jQuery tree for you and for me
+Responsive jQuery tree for you and for me.
+
+![](http://f.cl.ly/items/1W2q2812102E340e032d/Screen%20Shot%202013-08-23%20at%209.51.27%20PM.png)
 
 ## Getting Started
 ### Formatting HTML
