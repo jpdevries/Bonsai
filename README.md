@@ -1,7 +1,7 @@
 Bonsai
 ======
 
-Responsive jQuery Tree
+Responsive jQuery Tree for you and for me
 
 ## Getting Started
 ### Formatting HTML
