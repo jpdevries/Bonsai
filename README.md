@@ -62,6 +62,7 @@ Each anchor tag should have the i tags displayed below and contain a title.
 Call the bonsai jQuery plugin like so on the element(s) of your choice:
 
 ```js
-$('.bonsai').bonsai();
+// create a new bonsai
+var mytree = new $.bonsai($('.bonsai'));
 ````
 
