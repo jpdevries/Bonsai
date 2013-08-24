@@ -1,109 +1,77 @@
-Bonsai
+bonsai.js
 ======
 
-Responsive jQuery Tree
+Responsive jQuery tree for you and me
 
-## Getting Started
-### Formatting HTML
-Using Bonsai is easy as long as you feed it correctly formmated markup to consume. By default, each expandable item should have a 'folder' class, contain atleast one anchor tag and optionally have child folders.
-Each anchor tag should have the i tags displayed below and contain a title.
+Contribution Guides
+--------------------------------------
 
-```html
-    <div class="bonsai">
-        <ul class="section">
-          <li class="folder">
-            <a class="" href=""><i class="icon-caret-right"></i><i class="icon-doctype icon-columns"></i>Templates<i class="icon-chevron-sign-right"></i></a>
-            <ul class="section">
-              <li class="folder">
-                <a class="" href=""><i class="icon-caret-right"></i><i class="icon-folder icon-doctype icon-folder-close"></i>Navigation<i class="icon-chevron-sign-right"></i></a>
-                <ul class="section">
-                  <li><a href=""><i class="icon-filetype icon-doctype icon-columns"></i>header<i class="icon-chevron-sign-right"></i></a></li>
-                  <li><a href=""><i class="icon-filetype icon-doctype icon-columns"></i>footer<i class="icon-chevron-sign-right"></i></a></li>
-                  <li><a href=""><i class="icon-filetype icon-doctype icon-columns"></i>navigation<i class="icon-chevron-sign-right"></i></a></li>
-                  <li><a href=""><i class="icon-filetype icon-doctype icon-columns"></i>main-nav<i class="icon-chevron-sign-right"></i></a></li>
-                  <li><a href=""><i class="icon-filetype icon-doctype icon-columns"></i>footer-open<i class="icon-chevron-sign-right"></i></a></li>
-                  <li><a href=""><i class="icon-filetype icon-doctype icon-columns"></i>footer-close<i class="icon-chevron-sign-right"></i></a></li>
-                  <li><a href=""><i class="icon-filetype icon-doctype icon-columns"></i>wrapper<i class="icon-chevron-sign-right"></i></a></li>
-                  <li><a href=""><i class="icon-filetype icon-doctype icon-columns"></i>body-content<i class="icon-chevron-sign-right"></i></a></li>
-                </ul>
-              </li>
-            </ul>
-          </li>
-          <li class="folder">
-            <a class="" href=""><i class="icon-caret-right"></i><i class="icon-doctype icon-list-alt"></i>Fields<i class="icon-chevron-sign-right"></i></a>
-            <ul class="section">
-              <li class="folder">
-                <a class="" href=""><i class="icon-caret-right"></i><i class="icon-folder icon-doctype icon-folder-close"></i>Product<i class="icon-chevron-sign-right"></i></a>
-                <ul class="section">
-                  <li><a href=""><i class="icon-filetype icon-doctype icon-list-alt"></i>Price<i class="icon-chevron-sign-right"></i></a></li>
-                  <li><a href=""><i class="icon-filetype icon-doctype icon-list-alt"></i>Inventory<i class="icon-chevron-sign-right"></i></a></li>
-                </ul>
-              </li>
-            </ul>
-          </li>
-          <li class="folder">
-            <a class="" href=""><i class="icon-caret-right"></i><i class="icon-doctype icon-code"></i>Snippets<i class="icon-chevron-sign-right"></i></a>
-            <ul class="section">
-              <li class="folder">
-                <a class="" href=""><i class="icon-caret-right"></i><i class="icon-folder icon-doctype icon-folder-close"></i>getResources<i class="icon-chevron-sign-right"></i></a>
-                <ul class="section">
-                  <li><a href=""><i class="icon-filetype icon-doctype icon-code"></i>getResources<i class="icon-chevron-sign-right"></i></a></li>
-                </ul>
-              </li>
-            </ul>
-          </li>
-        </ul>
-      </div>
+In the spirit of open source software development, we encourage community code contribution. To help you get started and before you jump into writing code, be sure to read these important contribution guidelines thoroughly.
+
+What you need
+--------------------------------------
+
+In order to build bonsai front end assets, you need to have Node.js/npm latest and git 1.7 or later.
+(Earlier versions might work OK, but are not tested.)
+
+For Windows you have to download and install [git](http://git-scm.com/downloads) and [Node.js](http://nodejs.org/download/).
+
+Mac OS users should install [Homebrew](http://mxcl.github.com/homebrew/). Once Homebrew is installed, run `brew install git` to install git,
+and `brew install node` to install Node.js.
+
+Linux/BSD users should use their appropriate package managers to install git and Node.js, or build from source
+if you swing that way. Easy-peasy.
+
+Installing Grunt & Grunt Packages
+----------------------------
+
+First, clone a copy of this git repo by running:
+
+```bash
+git clone -b grunt git://github.com/rthrash/revolution.git
 ```
 
-## Using the Plugin
-Call the bonsai jQuery plugin like so on the element(s) of your choice:
+Install the [grunt-cli](http://gruntjs.com/getting-started#installing-the-cli) and [bower](http://bower.io/) packages if you haven't before. These should be done as global installs:
 
-```js
-$('.bonsai').bonsai();
-````
+```bash
+npm install -g grunt-cli bower
+```
 
-## Contributing Requirements
-bonsai uses grunt.js because it's smart. Here's how to get going with it.
+Make sure you have `grunt` and `bower` installed by testing:
 
-### node.js and npm
-_Note: If you haven't already you'll first need to [setup node.js and npm](http://shapeshed.com/setting-up-nodejs-and-npm-on-mac-osx/)._  
-If you are using [homebrew](http://github.com/mxcl/homebrew) you can setup node.js and npm with these commands:
+```bash
+grunt -version
+bower -version
+```
 
-    brew install node
-    curl https://npmjs.org/install.sh | sh
-    git clone http://github.com/isaacs/npm.git
-    cd npm
-    sudo make install
+Enter the default template directory and install the Node and Bower dependencies, this time *without* specifying a global(-g) install:
 
-### grunt
-_cd to the demo directory of this repository before installing grunt with the below command._
+```bash
+cd _built/templates/default && npm install
+```
+_Note: `npm install` updates dependencies and should be run whenever you pull from git._
 
-If you haven't used [Grunt](http://gruntjs.com/) before, be sure to check out the [Getting Started](http://gruntjs.com/getting-started) guide, as it explains how to create a [Gruntfile](http://gruntjs.com/sample-gruntfile) as well as install and use Grunt plugins. Once you're familiar with that process, you may install this plugin with this command:
+Grunt Commands
+----------------------------
 
-	npm install -g grunt-cli
+__Build__<br>
+Fetch dependencies, move items into place and compile by running:
 
-### using grunt tasks
-To fetch and update all [project dependencies](https://github.com/jpdevries/Bonsai/blob/master/demo/bower.json), move libraries into place, compile the Sass, and concatenate and minify the JavaScript:
+```bash
+grunt build
+```
 
-    grunt build
+__Watch__<br>
+Compile the Sass and watch files for changes type the following:
 
-To compile the Sass, concatenate and minify the JavaScript, and watch appropriate files for changes to trigger appropriate actions:
+```bash
+grunt
+```
+_Note: grunt is now watching files for changes. When Sass files are changed CSS will automatically be generated.<br>Install the LiveReload [browser extension](http://feedback.livereload.com/knowledgebase/articles/86242-how-do-i-install-and-use-the-browser-extensions-) to inject CSS changes without a page refresh._
 
-    grunt
-    
-To prepare the project for production by compiling the Sass, concatenating and minifiying the JavaScript and crushing images with ImageOptim:
+__Ship__<br>
+Compile Sass and minify for production by running:
 
-    grunt prod
-    
-### best practices
-Run the build task before commiting so we are all checking in pre-processed files in the same state.
-
-    grunt build
-    
-Run the prod task before pushing to production and tagging releases.
-
-    grunt prod
-    
-
-
+```bash
+grunt prod
+```
