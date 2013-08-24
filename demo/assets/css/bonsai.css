@@ -1401,96 +1401,30 @@ a .icon-rotate-90:before, a .icon-rotate-180:before, a .icon-rotate-270:before, 
 .icon-renren:before {
   content: "\f18b"; }
 
-* {
+.bonsai, .bonsai * {
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
-  box-sizing: border-box;
-  /* dangerous, this is gonna have to be .bonsai * */ }
-
-.icon-chevron-sign-right {
-  position: absolute;
-  right: 0.25em;
-  bottom: 0.6em;
-  font-size: 120%;
-  display: none !important; }
-
-.no-touch body {
-  min-height: auto;
-  height: 100%; }
-.no-touch #wrapper {
-  height: 100%; }
-.no-touch .bonsai {
-  overflow: scroll;
-  min-height: 100%; }
-  .no-touch .bonsai:hover {
-    background: rgba(60, 60, 60, 0.48);
-    -webkit-transition: all, 420ms, ease-in;
-    -moz-transition: all, 420ms, ease-in;
-    transition: all, 420ms, ease-in;
-    border: 1px solid rgba(100, 100, 100, 0.8); }
-  .no-touch .bonsai a:hover {
-    color: rgba(253, 253, 253, 0.99999); }
-    .no-touch .bonsai a:hover i {
-      opacity: 0.5; }
-  @media only screen and (max-width: 768px) {
-    .no-touch .bonsai a:hover {
-      background: rgba(200, 200, 200, 0.18); } }
+  box-sizing: border-box; }
 
 .bonsai {
-  font: 0.84em/1.4em "Helvetica Neue", Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -webkit-text-stroke: 0.6px;
   padding: 1em 0.5em 0.5em 0.5em;
-  border: 1px solid rgba(100, 100, 100, 0.4);
-  max-width: 300px;
-  background: rgba(60, 60, 60, 0.4);
-  color: #b4b4b4;
-  font-weight: normal;
-  -webkit-transition: all, 320ms, ease-out;
-  -moz-transition: all, 320ms, ease-out;
-  transition: all, 320ms, ease-out; }
-  .bonsai li {
-    overflow: hidden; }
-    .bonsai li.folder > .section {
-      overflow: hidden;
-      max-height: 0px;
-      position: relative;
-      z-index: 10;
-      opacity: 0;
-      -webkit-transition: opacity, 240ms, ease-in;
-      -moz-transition: opacity, 240ms, ease-in;
-      transition: opacity, 240ms, ease-in; }
-    .bonsai li.folder.open > a > i[class*="caret"] {
-      -webkit-transform: rotate(90deg);
-      -moz-transform: rotate(90deg);
-      -ms-transform: rotate(90deg);
-      -o-transform: rotate(90deg);
-      transform: rotate(90deg); }
-    .bonsai li.folder.open > .section {
-      max-height: none;
-      -webkit-transition: opacity, 240ms, ease-out;
-      -moz-transition: opacity, 240ms, ease-out;
-      transition: opacity, 240ms, ease-out;
-      opacity: 1; }
+  max-width: 300px; }
+  .bonsai li.folder > .section {
+    overflow: hidden;
+    max-height: 0px;
+    position: relative;
+    z-index: 10; }
+  .bonsai li.folder.open > .section {
+    max-height: none; }
   .bonsai .section {
-    list-style-type: none;
     padding: 0;
     margin: 0; }
     .bonsai .section .section {
       padding-left: 0.667em; }
   .bonsai a {
-    text-decoration: none;
-    color: inherit;
-    position: relative;
-    -webkit-transition: all, 320ms, ease-out;
-    -moz-transition: all, 320ms, ease-out;
-    transition: all, 320ms, ease-out; }
+    position: relative; }
   .bonsai i {
-    opacity: 0.3;
-    margin-right: 0.2em;
-    -webkit-transition: all, 320ms, ease-out;
-    -moz-transition: all, 320ms, ease-out;
-    transition: all, 320ms, ease-out; }
+    margin-right: 0.2em; }
     .bonsai i.icon-filetype {
       margin-right: 7px;
       margin-left: 9px; }
@@ -1504,9 +1438,6 @@ a .icon-rotate-90:before, a .icon-rotate-180:before, a .icon-rotate-270:before, 
     display: inline-block; }
   @media only screen and (max-width: 768px) {
     .bonsai {
-      color: white;
-      font-size: 1em;
-      line-height: 1.8em;
       padding: 0; }
       .bonsai .no-touch .bonsai {
         overflow: inherit;
@@ -1532,7 +1463,75 @@ a .icon-rotate-90:before, a .icon-rotate-180:before, a .icon-rotate-270:before, 
         margin-left: 0; }
       .bonsai a {
         padding: 0.42em 0.42em 0.42em 1.62em;
-        display: block; }
+        display: block; } }
+  @media only screen and (max-width: 480px) {
+    .bonsai {
+      max-width: none;
+      width: 100%; } }
+
+.no-touch .bonsai {
+  overflow: scroll;
+  min-height: 100%; }
+
+.no-touch body {
+  min-height: auto;
+  height: 100%; }
+.no-touch #wrapper {
+  height: 100%; }
+
+.icon-chevron-sign-right {
+  position: absolute;
+  right: 0.25em;
+  bottom: 0.6em;
+  font-size: 120%;
+  display: none !important; }
+
+.bonsai {
+  font: 0.84em/1.4em "Helvetica Neue", Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -webkit-text-stroke: 0.6px;
+  border: 1px solid rgba(100, 100, 100, 0.4);
+  background: rgba(60, 60, 60, 0.4);
+  color: #b4b4b4;
+  font-weight: normal;
+  -webkit-transition: all, 320ms, ease-out;
+  -moz-transition: all, 320ms, ease-out;
+  transition: all, 320ms, ease-out; }
+  .bonsai li {
+    overflow: hidden; }
+    .bonsai li.folder > .section {
+      opacity: 0;
+      -webkit-transition: opacity, 240ms, ease-in;
+      -moz-transition: opacity, 240ms, ease-in;
+      transition: opacity, 240ms, ease-in; }
+    .bonsai li.folder.open > a > i[class*="caret"] {
+      -webkit-transform: rotate(90deg);
+      -moz-transform: rotate(90deg);
+      -ms-transform: rotate(90deg);
+      -o-transform: rotate(90deg);
+      transform: rotate(90deg); }
+    .bonsai li.folder.open > .section {
+      -webkit-transition: opacity, 240ms, ease-out;
+      -moz-transition: opacity, 240ms, ease-out;
+      transition: opacity, 240ms, ease-out;
+      opacity: 1; }
+  .bonsai .section {
+    list-style-type: none; }
+  .bonsai a {
+    position: relative;
+    -webkit-transition: all, 320ms, ease-out;
+    -moz-transition: all, 320ms, ease-out;
+    transition: all, 320ms, ease-out; }
+  .bonsai i {
+    opacity: 0.3;
+    -webkit-transition: all, 320ms, ease-out;
+    -moz-transition: all, 320ms, ease-out;
+    transition: all, 320ms, ease-out; }
+  @media only screen and (max-width: 768px) {
+    .bonsai {
+      color: white;
+      font-size: 1em;
+      line-height: 1.8em; }
       .bonsai li {
         /* end tiny dots */ }
         .bonsai li li {
@@ -1578,7 +1577,18 @@ a .icon-rotate-90:before, a .icon-rotate-180:before, a .icon-rotate-270:before, 
         border-bottom: 1px solid rgba(120, 120, 120, 0.6); }
       .bonsai > .section > li:first-of-type {
         border-top: none; } }
-  @media only screen and (max-width: 480px) {
-    .bonsai {
-      max-width: none;
-      width: 100%; } }
+  @media only screen and (max-width: 480px) { }
+
+.no-touch .bonsai:hover {
+  background: rgba(60, 60, 60, 0.48);
+  -webkit-transition: all, 420ms, ease-in;
+  -moz-transition: all, 420ms, ease-in;
+  transition: all, 420ms, ease-in;
+  border: 1px solid rgba(100, 100, 100, 0.8); }
+.no-touch .bonsai a:hover {
+  color: rgba(253, 253, 253, 0.99999); }
+  .no-touch .bonsai a:hover i {
+    opacity: 0.5; }
+@media only screen and (max-width: 768px) {
+  .no-touch .bonsai a:hover {
+    background: rgba(200, 200, 200, 0.18); } }

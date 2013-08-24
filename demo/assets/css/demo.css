@@ -16,3 +16,9 @@ body {
     height: auto; }
   body {
     height: auto; } }
+
+a {
+  text-decoration: none; }
+
+a:visited {
+  color: inherit; }

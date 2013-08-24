@@ -1,0 +1,114 @@
+.bonsai, .bonsai * {
+	@include box-sizing(border-box); 
+}
+
+.bonsai {
+	padding:1em 0.5em 0.5em 0.5em;
+	max-width:300px;
+	li {	
+		&.folder {
+			> .section {
+				overflow: hidden;
+				max-height: 0px;
+				position: relative;
+				z-index: 10;
+			}
+			&.open {
+				> .section {
+					max-height:none;
+				}
+			}
+		}
+	}
+	.section {
+		padding:0;
+		margin:0;
+		.section {
+			padding-left:0.667em;
+		}
+	}
+	a {
+		position:relative;
+	}
+	i {
+		margin-right:0.2em;
+		&.icon-filetype {
+			margin-right:7px;
+			margin-left:9px;
+		}
+		&.icon-folder-close-alt {
+			margin-left:9px;
+		}
+	}
+	i[class*="caret"] {
+		margin-right:4px;
+		display:inline-block;
+	}
+	i[class*="folder"] {
+		min-width:14px;
+		display:inline-block;
+	}
+	
+	@media only screen and (max-width: 768px) {
+		.no-touch .bonsai {
+			overflow: inherit;
+			/* min-height:auto; */
+		}
+		#wrapper {
+			height:auto;
+		}
+		.section, .section .section {
+			padding-left:0;
+		}
+		.icon-doctype {
+			position:absolute;
+			top:0.8em;
+			left:0.333em;
+			&.icon-filetype {
+				left:0.3667em;
+				margin-left:0;
+				margin-right:0;
+			}
+		}
+		
+		.icon-chevron-sign-right {
+			display:inherit !important;
+			color:inherit;
+		}
+		
+
+		 
+		i[class*="caret"] {
+			display:none;
+		}
+		i.icon-folder-close-alt {
+			margin-left:0;
+		}
+		
+		.icon-filetype {
+
+		}
+		
+		
+		a {
+			padding:0.42em 0.42em 0.42em 1.62em;
+			display:block;
+		}
+		
+		padding:0;
+
+	}
+	
+	@media only screen and (max-width: 480px) {
+		max-width:none;
+		width:100%
+	}
+	
+}
+
+.no-touch {
+	.bonsai { 
+		overflow:scroll;
+		min-height:100%;
+	}  
+}

@@ -462,9 +462,9 @@ var json2html = {
 		var defaults = {							// default properties
 			data:[],
 			folderClass:'folder',
-			folderIconClass:'',
-			folderIconOpenClass:'',
-			folderIconCloseClass:''
+			folderIconClass:'icon-folder',
+			folderIconOpenClass:'icon-folder-open',
+			folderIconCloseClass:'icon-folder-close'
 
 			/*
 			handleCue:function(_cue) {
@@ -539,14 +539,14 @@ var json2html = {
 		}*/
 
 		return plugin.el.each(function() {
-			$(this).find('.' + plugin.settings.folderClass).each(function(){
+			$(this).find('.' + plugin.settings.folderClass).each(function(){ // each li.folder
 				$(this).children('a').click(function(e){
 					e.preventDefault(); // chill out 
 					$(this).parent().toggleClass('open'); // toggle it
 					if ($(this).parent().hasClass('open')) {
-						$(this).find('.icon-folder').removeClass('icon-folder-close').addClass('icon-folder-open');
+						$(this).find('.' + plugin.settings.folderIconClass).removeClass(plugin.settings.folderIconCloseClass).addClass(plugin.settings.folderIconOpenClass);
 					} else {
-						$(this).find('.icon-folder').removeClass('icon-folder-open').addClass('icon-folder-close');
+						$(this).find('.' + plugin.settings.folderIconClass).removeClass(plugin.settings.folderIconOpenClass).addClass(plugin.settings.folderIconOpenClass);
 					}
 				});
 			});

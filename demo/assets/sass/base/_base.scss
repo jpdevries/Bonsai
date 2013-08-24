@@ -1,0 +1,25 @@
+.no-touch {
+	body {
+		min-height:auto;
+		height:100%;
+	}
+	#wrapper {
+		height:100%; 
+	}
+}
+
+.icon-chevron-sign-right  {
+	position:absolute;
+	right:0.25em;
+	bottom:0.6em;
+	font-size:120%;
+	display:none !important;
+}
+
+a {
+	text-decoration:none;
+}
+
+a:visited {
+	color:inherit;
+}
