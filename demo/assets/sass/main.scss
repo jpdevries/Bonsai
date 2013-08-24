@@ -1,10 +1,9 @@
-@import "box-sizing";
 @import "font-awesome";
-@import "transition";
-@import "transform-rotate";
+@import "transform-rotate"; 
+@import "bourbon/bourbon";
 
 * {
-	@include box-sizing();
+	@include box-sizing(border-box);
 	
 }
 

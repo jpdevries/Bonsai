@@ -11,19 +11,18 @@ module.exports = function(grunt) {
 		}
 	},*/
 	dirs: { /* just defining some properties */
-		dest: 'lib',
+		dest: './lib',
 		scss: 'assets/sass/'//,
 		//js: 'js/'
 	},
-	bower: { /* package management */
-		dev: {
-			dest: 'lib/', 
+	bower: {
+		install: {
 			options: {
-				stripJSAffix: false
+				targetDir: './lib'
 			}
 		}
 	},
-	bowerInstall: {
+	/*bowerInstall: {
 		install: {
 			options: {
 				verbose: true,
@@ -32,23 +31,27 @@ module.exports = function(grunt) {
 				'targetDir':'sources/'
 			}
 		}
-	},
+	},*/
 	rename: { /* move files */
 		/*fontawesomeFont: {
 			src: 'bower_components/font-awesome/font/',
 			dest: 'assets/font/'
 		},*/
 		jquery: {
-			src: 'lib/jquery.js',
-			dest: 'assets/js/vendor/jquery.js'
+			src: './lib/jquery/jquery.js',
+			dest: './assets/js/vendor/jquery.js'
 		},
 		modernizr: {
-			src: 'lib/modernizr.js',
-			dest: 'assets/js/vendor/modernizr.dev.js'
+			src: './lib/modernizr/modernizr.js',
+			dest: './assets/js/vendor/modernizr.dev.js'
 		},
 		requirejs: {
-			src: 'lib/requirejs.js',
-			dest: 'assets/js/vendor/requirejs.js'
+			src: './lib/requirejs/require.js',
+			dest: './assets/js/vendor/requirejs/require.js'
+		},
+		bourbon: {
+			src: './lib/bourbon/',
+			dest: './assets/sass/'
 		}
 	},
 	asciify:{
@@ -72,8 +75,8 @@ module.exports = function(grunt) {
 	copy: {
 		main: {
 			files: [
-				{expand:true,cwd:'bower_components/font-awesome/css/',src:['font-awesome-ie7.css'], dest: 'assets/css/'},
-				{expand:true,cwd:'bower_components/font-awesome/font/',src:['*'],dest: 'assets/font/'}
+				{expand:true,cwd:'bower_components/font-awesome/css/',src:['font-awesome-ie7.css'], dest: './assets/css/'},
+				{expand:true,cwd:'bower_components/font-awesome/font/',src:['*'],dest: './assets/font/'}
 			]
 		}
 	},
@@ -84,8 +87,8 @@ module.exports = function(grunt) {
       build: {
         //src: 'src/<%= pkg.name %>.js',
         //dest: 'build/<%= pkg.name %>.min.js'
-		src: 'assets/js/main-dev.js',
-		dest: 'assets/js/main-min.js'
+		src: './assets/js/main-dev.js',
+		dest: './assets/js/main-min.js'
       }
     },
 	sass: { /* compile Sass */
@@ -101,7 +104,7 @@ module.exports = function(grunt) {
 				outputStyle: 'compressed'
 			},
 			files: {
-				'assets/css/main.css' : 'assets/sass/main.scss'
+				'./assets/css/main.css' : './assets/sass/main.scss'
 			}
 		},
 		dev: {
@@ -109,7 +112,7 @@ module.exports = function(grunt) {
 				outputStyle: 'expanded'
 			},
 			files: {
-				'assets/css/main.css' : 'assets/sass/main.scss'
+				'./assets/css/main.css' : './assets/sass/main.scss'
 			}
 		} 
 	},
@@ -118,36 +121,34 @@ module.exports = function(grunt) {
 			livereload: true
 		},
 		scss: {
-			files: 'assets/sass/*.scss',  
+			files: './assets/sass/*.scss',  
 			tasks: ['sass:dev']
 		},
 		script: {
-			files: [ 'assets/js/main.js', 'assets/js/plugins.js' ],
+			files: [ './assets/js/main.js', './assets/js/plugins.js' ],
 			tasks: [ 'concat:script','uglify' ]
 		}
 	},
 	clean: {  /* take out the trash  */
-		buildLib: {
-			dirs:['lib']
-		}
+		build:['lib']
 	}
   });
 
   grunt.loadNpmTasks( 'grunt-bower-task' );
-  grunt.renameTask( 'bower', 'bowerInstall' );
-  grunt.loadNpmTasks( 'grunt-bower' );
+  //grunt.renameTask( 'bower', 'bowerInstall' );
+  //grunt.loadNpmTasks( 'grunt-bower' );
   grunt.loadNpmTasks( 'grunt-rename' );
   grunt.loadNpmTasks('grunt-contrib-copy');
   grunt.loadNpmTasks( 'grunt-sass' );
   grunt.loadNpmTasks( 'grunt-contrib-watch' );
   grunt.loadNpmTasks( 'grunt-contrib-concat' );
   grunt.loadNpmTasks( 'grunt-contrib-uglify' );
-  grunt.loadNpmTasks('grunt-cleanx');
+  grunt.loadNpmTasks('grunt-contrib-clean');
   grunt.loadNpmTasks('grunt-asciify');
   //grunt.loadNpmTasks( 'grunt-notify' );
 
   // Tasks
   grunt.registerTask('default', ['sass:dev','concat','uglify','watch']);
-  grunt.registerTask('build', ['bowerInstall','bower','rename','copy','sass:dev','asciify','concat','uglify','clean']);
+  grunt.registerTask('build', ['bower','rename','copy','sass:dev','asciify','concat','uglify','clean']);
   grunt.registerTask('prod',['sass:dist','concat','uglify']);
 };
