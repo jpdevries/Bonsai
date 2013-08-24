@@ -1,7 +1,7 @@
 bonsai.js
 ======
 
-Responsive jQuery tree for you and for me
+Responsive jQuery tree for you and me
 
 Contribution Guides
 --------------------------------------
