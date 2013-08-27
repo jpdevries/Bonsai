@@ -1,3 +1,12 @@
+/*\
+/\ \                                           __    
+\ \ \____    ___     ___      ____     __     /\_\   
+ \ \ '__`\  / __`\ /' _ `\   /',__\  /'__`\   \/\ \  
+  \ \ \L\ \/\ \L\ \/\ \/\ \ /\__, `\/\ \L\.\_  \ \ \ 
+   \ \_,__/\ \____/\ \_\ \_\\/\____/\ \__/.\_\  \ \_\
+    \/___/  \/___/  \/_/\/_/ \/___/  \/__/\/_/   \/_/
+       
+        - a javascript tree for you and me */
 /*!
  *  Font Awesome 3.2.1
  *  the iconic font designed for Bootstrap
@@ -1403,20 +1412,45 @@ a .icon-rotate-90:before, a .icon-rotate-180:before, a .icon-rotate-270:before, 
 
 /* icon font dependency */
 /* a little bourbon never hurt anybody */
+/* global variables */
+/* global mixins */
+/* ssssshhhhh, silent classes */
+.bonsai {
+  max-width: none;
+  width: 100%; }
 
-%smooth-sans-serif, .bonsai {
-  -webkit-font-smoothing: antialiased;
-  -webkit-text-stroke: 0.6px; }
-
+/* pst: silent classes are abstract, reusable and don't get printed unless they are used */
 /* global directory contains all of your non-printing styles. This allows for a single folder that can bootsrap any new stylesheet. You should be able to reskin an entire website by updating the variables and Extend directories */
+/* folder component that toggles open and rotates tree icon */
+%folder > .section {
+  opacity: 0;
+  -webkit-transition: opacity, 240ms, ease-in;
+  -moz-transition: opacity, 240ms, ease-in;
+  transition: opacity, 240ms, ease-in; }
+%folder.open > a > i[class*="caret"] {
+  -webkit-transform: rotate(90deg);
+  -moz-transform: rotate(90deg);
+  -ms-transform: rotate(90deg);
+  -o-transform: rotate(90deg);
+  transform: rotate(90deg); }
+%folder.open > .section {
+  -webkit-transition: opacity, 240ms, ease-out;
+  -moz-transition: opacity, 240ms, ease-out;
+  transition: opacity, 240ms, ease-out;
+  opacity: 1; }
+
+/* components are standalone, resuable, and have no knowledge of their parent container. A naked component partial is merely a collection of the DOM elements in that component. If done properly, each component should be a list of extends, mixins, and vertical rhythm */
+/* layout related mixins */
 .bonsai, .bonsai * {
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
-  box-sizing: border-box; }
+  box-sizing: border-box;
+  /* screw it, let's do it */ }
 
 .bonsai {
   padding: 1em 0.5em 0.5em 0.5em;
-  max-width: 300px; }
+  max-width: 300px;
+  /* mixin for standard and touch layouts, accepts optional parameters */ }
   .bonsai li.folder > .section {
     overflow: hidden;
     max-height: 0px;
@@ -1424,6 +1458,8 @@ a .icon-rotate-90:before, a .icon-rotate-180:before, a .icon-rotate-270:before, 
     z-index: 10; }
   .bonsai li.folder.open > .section {
     max-height: none; }
+  .bonsai a {
+    position: relative; }
   .bonsai .section {
     padding: 0;
     margin: 0; }
@@ -1447,11 +1483,6 @@ a .icon-rotate-90:before, a .icon-rotate-180:before, a .icon-rotate-270:before, 
   @media only screen and (max-width: 768px) {
     .bonsai {
       padding: 0; }
-      .bonsai .no-touch .bonsai {
-        overflow: inherit;
-        /* min-height:auto; */ }
-      .bonsai #wrapper {
-        height: auto; }
       .bonsai .section, .bonsai .section .section {
         padding-left: 0; }
       .bonsai .icon-doctype {
@@ -1472,22 +1503,9 @@ a .icon-rotate-90:before, a .icon-rotate-180:before, a .icon-rotate-270:before, 
       .bonsai a {
         padding: 0.42em 0.42em 0.42em 1.62em;
         display: block; } }
-  @media only screen and (max-width: 480px) {
-    .bonsai {
-      max-width: none;
-      width: 100%; } }
-
-.no-touch .bonsai {
-  overflow: scroll;
-  min-height: 100%; }
+  @media only screen and (max-width: 480px) { }
 
 /* by seperating layout from style you ensure adherence to a consistent grid and set the foundation for a responsive layout */
-.no-touch body {
-  min-height: auto;
-  height: 100%; }
-.no-touch #wrapper {
-  height: 100%; }
-
 .icon-chevron-sign-right {
   position: absolute;
   right: 0.25em;
@@ -1502,37 +1520,37 @@ a:visited, a:active, a {
   color: inherit; }
 
 /* base directory contains all of the visual styles that are not layout or are specific to a component */
-/* components are standalone, resuable, and have no knowledge of their parent container. A naked component partial is merely a collection of the DOM elements in that component. If done properly, each component should be a list of extends, mixins, and vertical rhythm */
+/* start theme variables */
+/* end theme variables */
+/* sssshhh, silent classes */
+
+%smooth-sans-serif, .bonsai {
+  -webkit-font-smoothing: antialiased;
+  -webkit-text-stroke: 0.6px; }
+
+/* meat & potatoes for how this tree looks
+    - font
+    - colors
+    - transitions
+    - graphics
+    - general style
+    - hovers
+*/
 .bonsai {
   border: 1px solid rgba(100, 100, 100, 0.4);
+  font-size: 0.6;
   background: rgba(60, 60, 60, 0.4);
   color: #b4b4b4;
   font-weight: normal;
   -webkit-transition: all, 320ms, ease-out;
   -moz-transition: all, 320ms, ease-out;
-  transition: all, 320ms, ease-out; }
+  transition: all, 320ms, ease-out;
+  /* change to touch friendly */ }
   .bonsai li {
     overflow: hidden; }
-    .bonsai li.folder > .section {
-      opacity: 0;
-      -webkit-transition: opacity, 240ms, ease-in;
-      -moz-transition: opacity, 240ms, ease-in;
-      transition: opacity, 240ms, ease-in; }
-    .bonsai li.folder.open > a > i[class*="caret"] {
-      -webkit-transform: rotate(90deg);
-      -moz-transform: rotate(90deg);
-      -ms-transform: rotate(90deg);
-      -o-transform: rotate(90deg);
-      transform: rotate(90deg); }
-    .bonsai li.folder.open > .section {
-      -webkit-transition: opacity, 240ms, ease-out;
-      -moz-transition: opacity, 240ms, ease-out;
-      transition: opacity, 240ms, ease-out;
-      opacity: 1; }
   .bonsai .section {
     list-style-type: none; }
   .bonsai a {
-    position: relative;
     -webkit-transition: all, 320ms, ease-out;
     -moz-transition: all, 320ms, ease-out;
     transition: all, 320ms, ease-out; }
@@ -1549,7 +1567,8 @@ a:visited, a:active, a {
       .bonsai li {
         /* end tiny dots */ }
         .bonsai li li {
-          /* start tiny dots - if this is a keeper, use a sass loop and consider making a component */ }
+          /* use tiny dots to depict depth */
+          /* if this is a keeper, use a sass loop and consider making a component */ }
           .bonsai li li a:after {
             content: " ";
             border-top: 1px dotted grey;
@@ -1581,10 +1600,12 @@ a:visited, a:active, a {
             width: 44px; }
       .bonsai li {
         border-top: 1px solid rgba(120, 120, 120, 0.6); }
-        .bonsai li.open > a {
-          font-weight: normal; }
-          .bonsai li.open > a i:not(.icon-chevron-sign-right) {
-            opacity: 1; }
+        .bonsai li.open {
+          /* an open folder */ }
+          .bonsai li.open > a {
+            font-weight: normal; }
+            .bonsai li.open > a i:not(.icon-chevron-sign-right) {
+              opacity: 1; }
         .bonsai li.folder.open, .bonsai li.folder.open {
           background: rgba(20, 20, 20, 0.48); }
       .bonsai > .section > li:last-of-type {
@@ -1593,18 +1614,22 @@ a:visited, a:active, a {
         border-top: none; } }
   @media only screen and (max-width: 480px) { }
 
-.no-touch .bonsai:hover {
-  background: rgba(60, 60, 60, 0.48);
-  -webkit-transition: all, 420ms, ease-in;
-  -moz-transition: all, 420ms, ease-in;
-  transition: all, 420ms, ease-in;
-  border: 1px solid rgba(100, 100, 100, 0.8); }
-.no-touch .bonsai a:hover {
-  color: rgba(253, 253, 253, 0.99999); }
-  .no-touch .bonsai a:hover i {
-    opacity: 0.5; }
-@media only screen and (max-width: 768px) {
-  .no-touch .bonsai a:hover {
-    background: rgba(200, 200, 200, 0.18); } }
+.no-touch, .no-js {
+  /* hovers */ }
+  .no-touch .bonsai:hover, .no-js .bonsai:hover {
+    background: rgba(60, 60, 60, 0.48);
+    -webkit-transition: all, 420ms, ease-in;
+    -moz-transition: all, 420ms, ease-in;
+    transition: all, 420ms, ease-in;
+    border: 1px solid rgba(100, 100, 100, 0.8); }
+  .no-touch .bonsai a:hover, .no-js .bonsai a:hover {
+    color: rgba(253, 253, 253, 0.99999); }
+    .no-touch .bonsai a:hover i, .no-js .bonsai a:hover i {
+      opacity: 0.5; }
+  @media only screen and (max-width: 768px) {
+    .no-touch .bonsai, .no-js .bonsai {
+      /* seriously have no idea why i did this */ }
+      .no-touch .bonsai a:hover, .no-js .bonsai a:hover {
+        background: rgba(200, 200, 200, 0.18); } }
 
-/* the bonsai theme of our choice */
+/* the bonsai theme of our choice and likely to be loaded as a seperate stylesheet for flexibility */

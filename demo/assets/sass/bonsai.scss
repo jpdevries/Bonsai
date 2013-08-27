@@ -1,9 +1,19 @@
+/*\
+/\ \                                           __    
+\ \ \____    ___     ___      ____     __     /\_\   
+ \ \ '__`\  / __`\ /' _ `\   /',__\  /'__`\   \/\ \  
+  \ \ \L\ \/\ \L\ \/\ \/\ \ /\__, `\/\ \L\.\_  \ \ \ 
+   \ \_,__/\ \____/\ \_\ \_\\/\____/\ \__/.\_\  \ \_\
+    \/___/  \/___/  \/_/\/_/ \/___/  \/__/\/_/   \/_/
+       
+        - a javascript tree for you and me */
+
 @import "font-awesome"; /* icon font dependency */
 @import "bourbon/bourbon"; /* a little bourbon never hurt anybody */
 
 @import "global/global"; /* global directory contains all of your non-printing styles. This allows for a single folder that can bootsrap any new stylesheet. You should be able to reskin an entire website by updating the variables and Extend directories */
+@import "components/components"; /* components are standalone, resuable, and have no knowledge of their parent container. A naked component partial is merely a collection of the DOM elements in that component. If done properly, each component should be a list of extends, mixins, and vertical rhythm */
 @import "layout/layout"; /* by seperating layout from style you ensure adherence to a consistent grid and set the foundation for a responsive layout */
 @import "base/base"; /* base directory contains all of the visual styles that are not layout or are specific to a component */
-@import "components/components"; /* components are standalone, resuable, and have no knowledge of their parent container. A naked component partial is merely a collection of the DOM elements in that component. If done properly, each component should be a list of extends, mixins, and vertical rhythm */
 
-@import "base/bonsai.moonlight"; /* the bonsai theme of our choice */
+@import "base/bonsai.moonlight"; /* the bonsai theme of our choice and likely to be loaded as a seperate stylesheet for flexibility */

@@ -1,0 +1,16 @@
+/* folder component that toggles open and rotates tree icon */
+%folder {
+	> .section {
+		opacity:0; 
+		@include transition(opacity,240ms,ease-in);
+	}
+	&.open {
+		> a > i[class*="caret"] {
+			@include transform(rotate(90deg)); 
+		}
+		> .section {
+			@include transition(opacity,240ms,ease-out);
+			opacity:1;
+		} 
+	}
+}

@@ -91,33 +91,28 @@ module.exports = function(grunt) {
 		dest: './assets/js/main-min.js'
       }
     },
-	sass: { /* compile Sass */
-		options: {
-			trace: true,
-			compass: true//,
-			/*loadPath: [
-				'lib/matter'
-			]*/
-		},
-		dist: {
-			options: {
-				outputStyle: 'compressed'
-			},
-			files: {
+  sass: {                              
+    dist: {                            
+      options: {                       
+        style: 'compressed',
+        compass: true
+      },
+      files: {                         
 				'./assets/css/bonsai.min.css' : './assets/sass/bonsai.scss',
 				'./assets/css/demo.css' : './assets/sass/demo.scss'
-			}
-		},
-		dev: {
-			options: {
-				outputStyle: 'expanded'
-			},
-			files: {
+      }
+    },
+    dev: {                            
+      options: {                      
+        style: 'expanded',
+        compass: true
+      },
+      files: {                        
 				'./assets/css/bonsai.css' : './assets/sass/bonsai.scss',
 				'./assets/css/demo.css' : './assets/sass/demo.scss'
-			}
-		} 
-	},
+      }
+    }
+  },
 	watch: { /* trigger tasks on save */
 		options: {
 			livereload: true

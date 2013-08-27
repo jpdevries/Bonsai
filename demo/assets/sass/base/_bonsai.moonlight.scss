@@ -1,3 +1,7 @@
+/* start theme variables */
+$fontSize:0.84em/1.4em;
+$toTouch:768px;
+
 $borderColor:rgba(100,100,100,0.4);
 $bg:rgba(60,60,60,0.4);
 $color:rgba(180,180,180,1);
@@ -10,10 +14,31 @@ $borderTopHover:rgba(100,100,100,0.8);
 $colorHover:rgba(253,253,253,0.99999);
 $hoverOpacity:0.5;
 $iconOpacity:0.3;
+/* end theme variables */
 
+/* sssshhh, silent classes */
+%sans-serif {
+	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+%smooth-sans-serif {
+	@extend %smooth-sans-serif;
+	-webkit-font-smoothing: antialiased;
+	-webkit-text-stroke: 0.6px;
+}
+
+/* meat & potatoes for how this tree looks
+    - font
+    - colors
+    - transitions
+    - graphics
+    - general style
+    - hovers
+*/
 .bonsai {
 	@extend %smooth-sans-serif;
 	border:1px solid $borderColor;
+	font-size: $fontSize;
 	background:$bg;
 	color:$color; 
 	font-weight:normal;
@@ -21,38 +46,26 @@ $iconOpacity:0.3;
 	li {
 		overflow:hidden;	
 		&.folder {
-			> .section {
-				opacity:0; 
-				@include transition(opacity,240ms,ease-in);
-			}
-			&.open {
-				> a > i[class*="caret"] {
-					@include transform(rotate(90deg)); 
-				}
-				> .section {
-					@include transition(opacity,240ms,ease-out);
-					opacity:1;
-				} 
-			}
+			@extend %folder;
 		}
 	}
 	.section {
 		list-style-type:none;
 	}
 	a {
-		position:relative;
 		@include transition(all,320ms,ease-out);
-
 	}
 	i {
 		opacity:$iconOpacity;
 		@include transition(all,320ms,ease-out);
 	}
 	
-	@media only screen and (max-width: 768px) {
+	/* change to touch friendly */
+	@media only screen and (max-width: $toTouch) {
 		color:white;
 		li {
 			li {
+				/* use tiny dots to depict depth */
 				a:after {
 					content:" ";
 					border-top:1px dotted $dotColor;
@@ -64,7 +77,7 @@ $iconOpacity:0.3;
 					height:10px;
 				}
 				
-				/* start tiny dots - if this is a keeper, use a sass loop and consider making a component */
+				/* if this is a keeper, use a sass loop and consider making a component */
 				li {
 					a:after { width:8px; }
 					li {
@@ -101,8 +114,7 @@ $iconOpacity:0.3;
 		
 		li { 
 			border-top:1px solid $borderTopColor;
-			
-			&.open {
+			&.open { /* an open folder */
 				> a {
 					font-weight:normal;
 					i:not(.icon-chevron-sign-right) {
@@ -127,12 +139,10 @@ $iconOpacity:0.3;
 					border-top:none;
 				}
 			}
-			
 		}
 
 		font-size:1em;
 		line-height:1.8em;
-
 	}
 	
 	@media only screen and (max-width: 480px) {
@@ -141,13 +151,14 @@ $iconOpacity:0.3;
 	
 }
 
-.no-touch {
+.no-touch, .no-js { /* hovers */
 	.bonsai { 
 		&:hover {
 			background:$bgHighlight;
 			@include transition(all,420ms,ease-in);
 			border:1px solid $borderTopHover;
 		}
+		
 		a {
 			&:hover {
 				color:$colorHover;
@@ -156,7 +167,8 @@ $iconOpacity:0.3;
 				}
 			}
 		}
-		@media only screen and (max-width: 768px) {
+
+		@media only screen and (max-width: 768px) { /* seriously have no idea why i did this */
 			a {
 				&:hover {
 					background:rgba(200,200,200,0.18);

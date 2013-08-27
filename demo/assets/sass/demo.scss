@@ -14,6 +14,32 @@ body {
 	}
 }
 
+.no-touch .bonsai {
+	overflow: inherit;
+	/* min-height:auto; */
+}
+
+.no-touch {
+	body {
+		min-height:auto;
+		height:100%;
+	}
+	#wrapper {
+		height:100%; 
+	}
+}
+
+/*.no-touch {
+	.bonsai { 
+		overflow:scroll;
+		min-height:100%;
+	}  
+}*/
+
+#wrapper {
+	height:auto;
+}
+
 @media only screen and (max-width: 768px) {
 	html {
 		min-height:100%;

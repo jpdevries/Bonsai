@@ -6,3 +6,6 @@ node_modules
 .DS_Store
 demo/assets/sass/bourbon
 demo/sources/
+demo/bonsai.demo.sublime-project
+demo/bonsai.demo.sublime-workspace
+npm-debug.log

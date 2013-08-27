@@ -1,0 +1,111 @@
+@mixin bonsai-touch-layout(
+	$padding:0,
+	$docTypePosT:0.8em,
+	$docTypePosL:0.333em,
+	$filetypePosL:0.3667em,
+	$anchorPadding:0.42em 0.42em 0.42em 1.62em
+) {
+		.section, .section .section {
+			padding-left:0;
+		}
+		.icon-doctype {
+			position:absolute;
+			top:$docTypePosT;
+			left:$docTypePosL;
+			&.icon-filetype {
+				left:$filetypePosL;
+				margin-left:0;
+				margin-right:0;
+			}
+		}
+		
+		.icon-chevron-sign-right {
+			display:inherit !important;
+			color:inherit;
+		}
+		
+
+		 
+		i[class*="caret"] {
+			display:none;
+		}
+		i.icon-folder-close-alt {
+			margin-left:0;
+		}
+		
+		.icon-filetype {
+
+		}
+
+		a {
+			padding:$anchorPadding;
+			display:block;
+		}
+		
+		padding:$padding;
+}
+
+@mixin bonsai-layout(
+	$treePadding:1em 0.5em 0.5em 0.5em,
+	$treeMaxWidth:300px,
+	$subSectionPaddingL:0.667em,
+	$iconMarginR:0.2em,
+	$touchAt:768px
+	) {
+	padding:$treePadding;
+	max-width:$treeMaxWidth;
+	li {	
+		&.folder {
+			> .section {
+				overflow: hidden;
+				max-height: 0px;
+				position: relative;
+				z-index: 10;
+			}
+			&.open {
+				> .section {
+					max-height:none;
+				}
+			}
+		}
+	}
+	a {
+		position:relative;
+	}
+	.section {
+		padding:0;
+		margin:0;
+		.section {
+			padding-left:$subSectionPaddingL;
+		}
+	}
+	a {
+		position:relative;
+	}
+	i {
+		margin-right:$iconMarginR;
+		&.icon-filetype {
+			margin-right:7px;
+			margin-left:9px;
+		}
+		&.icon-folder-close-alt {
+			margin-left:9px;
+		}
+	}
+	i[class*="caret"] {
+		margin-right:4px;
+		display:inline-block;
+	}
+	i[class*="folder"] {
+		min-width:14px;
+		display:inline-block;
+	}
+	
+	@media only screen and (max-width: $touchAt) {
+		@include bonsai-touch-layout();
+	}
+	
+	@media only screen and (max-width: 480px) {
+		@extend %stretch;
+	}
+}
