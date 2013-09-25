@@ -2,56 +2,18 @@ module.exports = function(grunt) {
   // Project configuration.
   grunt.initConfig({
     pkg: grunt.file.readJSON('package.json'),
-	/*notify:{
-		watch: {
-			options: {
-				title: 'Done Grunting!',
-				message: 'Sass complete'
-			}
-		}
-	},*/
 	dirs: { /* just defining some properties */
-		dest: './lib',
-		scss: 'assets/sass/'//,
-		//js: 'js/'
+		lib: './lib',
+		assets: './assets/',
+		scss: '<%= dirs.assets %>sass/',
+		js: '<%= dirs.assets %>js/',
+		css: '<%= dirs.assets %>css/',
 	},
 	bower: {
 		install: {
 			options: {
-				targetDir: './lib'
+				targetDir: '<%= dirs.lib %>'
 			}
-		}
-	},
-	/*bowerInstall: {
-		install: {
-			options: {
-				verbose: true,
-				layout: 'byType',
-				cleanTargetDir: true,
-				'targetDir':'sources/'
-			}
-		}
-	},*/
-	rename: { /* move files */
-		/*fontawesomeFont: {
-			src: 'bower_components/font-awesome/font/',
-			dest: 'assets/font/'
-		},*/
-		jquery: {
-			src: './lib/jquery/jquery.js',
-			dest: './assets/js/vendor/jquery.js'
-		},
-		modernizr: {
-			src: './lib/modernizr/modernizr.js',
-			dest: './assets/js/vendor/modernizr.dev.js'
-		},
-		requirejs: {
-			src: './lib/requirejs/require.js',
-			dest: './assets/js/vendor/require.js'
-		},
-		bourbon: {
-			src: './lib/bourbon/',
-			dest: './assets/sass/'
 		}
 	},
 	asciify:{
@@ -65,51 +27,55 @@ module.exports = function(grunt) {
 	concat: { /* concatenate javascript */
 		script: {
 			options:{
-				banner: '/*!\n <%= asciify_myBanner %> \n*/\n'
+				
 			},
 			files: {
-				'assets/js/main-dev.js' : ['assets/js/plugins.js','assets/js/vendor/json2html.js','assets/js/vendor/jquery.json2html.js','assets/js/vendor/bonsai.js','assets/js/main.js'] 
+				'<%= dirs.js %>main-dev.js' : ['<%= dirs.js %>plugins.js','<%= dirs.js %>vendor/json2html.js','<%= dirs.js %>vendor/jquery.json2html.js','<%= dirs.js %>vendor/bonsai.js','<%= dirs.js %>main.js'] 
 			}
 		}
 	},
 	copy: {
 		main: {
 			files: [
-				{expand:true,cwd:'bower_components/font-awesome/css/',src:['font-awesome-ie7.css'], dest: './assets/css/'},
-				{expand:true,cwd:'bower_components/font-awesome/font/',src:['*'],dest: './assets/font/'}
+				{expand:true,cwd:'./bower_components/font-awesome/css/',src:['font-awesome-ie7.css'], dest: '<%= dirs.css %>'},
+				{expand:true,cwd:'./bower_components/font-awesome/font/',src:['*'],dest: './assets/font/'},
+				{src: './lib/jquery/jquery.js', dest: '<%= dirs.js %>vendor/jquery.js'},
+				{src: './lib/modernizr/modernizr.js', dest: '<%= dirs.js %>vendor/modernizr.dev.js'},
+				{src: './lib/requirejs/require.js', dest: '<%= dirs.js %>vendor/require.js'},
+				{src: 'bourbon/**/*',cwd: '<%= dirs.lib %>',dest: '<%= dirs.scss %>',expand: true}
 			]
 		}
 	},
     uglify: { /* minify javascript */
       options: {
-        banner: '/*!\n <%= asciify_myBanner %> \n*/\n'
+        banner: '/*!\n<%= asciify_myBanner %> */\n\n'
       },
       build: {
-        //src: 'src/<%= pkg.name %>.js',
-        //dest: 'build/<%= pkg.name %>.min.js'
-		src: './assets/js/main-dev.js',
-		dest: './assets/js/main-min.js'
+		src: '<%= dirs.js %>main-dev.js',
+		dest: '<%= dirs.js %>main-min.js'
       }
     },
   sass: {                              
     dist: {                            
       options: {                       
         style: 'compressed',
-        compass: true
+        compass: true,
+        banner: '/*!\n<%= asciify_myBanner %> */\n\n'
       },
       files: {                         
-				'./assets/css/bonsai.min.css' : './assets/sass/bonsai.scss',
-				'./assets/css/demo.css' : './assets/sass/demo.scss'
+				'<%= dirs.css %>bonsai.css' : '<%= dirs.scss %>bonsai.scss',
+				'<%= dirs.css %>demo.css' : '<%= dirs.scss %>demo.scss'
       }
     },
     dev: {                            
       options: {                      
         style: 'expanded',
-        compass: true
+        compass: true,
+        banner: '/*!\n<%= asciify_myBanner %> */\n\n'
       },
       files: {                        
-				'./assets/css/bonsai.css' : './assets/sass/bonsai.scss',
-				'./assets/css/demo.css' : './assets/sass/demo.scss'
+				'<%= dirs.css %>bonsai.css' : '<%= dirs.scss %>bonsai.scss',
+				'<%= dirs.css %>demo.css' : '<%= dirs.scss %>demo.scss'
       }
     }
   },
@@ -118,17 +84,17 @@ module.exports = function(grunt) {
 			livereload: true
 		},
 		scss: {
-			files: './assets/sass/**/*.scss',  
+			files: '<%= dirs.scss %>**/*.scss',  
 			tasks: ['sass:dev','growl:sass']
 		},
 		script: {
-			files: [ './assets/js/main.js', './assets/js/plugins.js', './assets/js/vendor/bonsai.js' ],
+			files: [ '<%= dirs.js %>main.js', '<%= dirs.js %>plugins.js', '<%= dirs.js %>vendor/bonsai.js' ],
 			tasks: [ 'asciify','concat:script','uglify','growl:js' ]
 		}
 	},
 	clean: {  /* take out the trash  */
 		build:['lib'],
-		prebuild:['./assets/sass/bourbon/']
+		prebuild:['<%= dirs.scss %>bourbon/']
 	},
 	growl:{
 		sass : {
@@ -151,21 +117,17 @@ module.exports = function(grunt) {
   });
 
   grunt.loadNpmTasks( 'grunt-bower-task' );
-  //grunt.renameTask( 'bower', 'bowerInstall' );
-  //grunt.loadNpmTasks( 'grunt-bower' );
-  grunt.loadNpmTasks( 'grunt-rename' );
   grunt.loadNpmTasks('grunt-contrib-copy');
-  grunt.loadNpmTasks( 'grunt-sass' );
+  grunt.loadNpmTasks( 'grunt-contrib-sass' );
   grunt.loadNpmTasks( 'grunt-contrib-watch' );
   grunt.loadNpmTasks( 'grunt-contrib-concat' );
   grunt.loadNpmTasks( 'grunt-contrib-uglify' );
   grunt.loadNpmTasks('grunt-contrib-clean');
   grunt.loadNpmTasks('grunt-asciify');
   grunt.loadNpmTasks('grunt-growl');
-  //grunt.loadNpmTasks( 'grunt-notify' );
 
   // Tasks
-  grunt.registerTask('default', ['sass:dev','growl:sass','concat','uglify','watch','growl:watch']);
-  grunt.registerTask('build', ['clean:prebuild','bower','rename','copy','sass:dev','growl:sass','asciify','concat','uglify','clean:build','growl:build']);
-  grunt.registerTask('prod',['sass:dist','grunt:sass','concat','uglify','growl:js']);
+  grunt.registerTask('default', ['sass:dev','growl:sass','concat','uglify','growl:js','watch','growl:watch']);
+  grunt.registerTask('build', ['clean:prebuild','bower','copy','asciify','sass:dev','growl:sass','concat','uglify','growl:js','clean:build','growl:build']);
+  grunt.registerTask('prod',['asciify','sass:dist','growl:sass','concat','uglify','growl:js']);
 };

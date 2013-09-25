@@ -9,3 +9,4 @@ demo/sources/
 demo/bonsai.demo.sublime-project
 demo/bonsai.demo.sublime-workspace
 npm-debug.log
+.sass-cache

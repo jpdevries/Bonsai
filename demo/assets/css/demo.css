@@ -1,24 +1,44 @@
+/*!
+ __                                                  
+/\ \                                           __    
+\ \ \____    ___     ___      ____     __     /\_\   
+ \ \ '__`\  / __`\ /' _ `\   /',__\  /'__`\   \/\ \  
+  \ \ \L\ \/\ \L\ \/\ \/\ \ /\__, `\/\ \L\.\_  \ \ \ 
+   \ \_,__/\ \____/\ \_\ \_\\/\____/\ \__/.\_\  \ \_\
+    \/___/  \/___/  \/_/\/_/ \/___/  \/__/\/_/   \/_/
+                                                     
+                                                     
+ */
+
+
 html {
   height: 100%;
-  background: #141414; }
+  background: #141414;
+}
 
 body {
   min-height: 100%;
   color: white;
-  padding: 2em; }
-  @media only screen and (max-width: 768px) {
-    body {
-      padding: 0; } }
+  padding: 2em;
+}
+@media only screen and (max-width: 768px) {
+  body {
+    padding: 0;
+  }
+}
 
 .no-touch .bonsai {
   overflow: inherit;
-  /* min-height:auto; */ }
+  /* min-height:auto; */
+}
 
 .no-touch body {
   min-height: auto;
-  height: 100%; }
+  height: 100%;
+}
 .no-touch #wrapper {
-  height: 100%; }
+  height: 100%;
+}
 
 /*.no-touch {
 	.bonsai { 
@@ -27,11 +47,16 @@ body {
 	}  
 }*/
 #wrapper {
-  height: auto; }
+  height: auto;
+}
 
 @media only screen and (max-width: 768px) {
   html {
     min-height: 100%;
-    height: auto; }
+    height: auto;
+  }
+
   body {
-    height: auto; } }
+    height: auto;
+  }
+}
