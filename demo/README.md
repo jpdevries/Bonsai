@@ -43,7 +43,7 @@ Make sure you have `grunt` installed by testing:
 grunt -version
 ```
 
-Enter the default template directory and install the Node and Bower dependencies, this time *without* specifying a global(-g) install:
+Enter the default template directory and install the Node dependencies, this time *without* specifying a global(-g) install:
 
 ```bash
 cd Bonsai/demo
