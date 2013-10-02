@@ -38,7 +38,7 @@ Installing Grunt & Grunt Packages
 First, clone a copy of this git repo by running:
 
 ```bash
-git clone -b develop git://github.com/modxcms/revolution.git
+git clone -b develop git://github.com/jpdevries/bonsai.git
 ```
 
 Install the [grunt-cli](http://gruntjs.com/getting-started#installing-the-cli) package if you haven't before. This should be done as global installs:
