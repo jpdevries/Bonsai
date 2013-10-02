@@ -43,7 +43,7 @@ $(document).ready(function(){
 
 		//Transforms
 
-        var transforms = {
+        var transforms = { 
 	         
 			'barChart': [
 		        
@@ -61,8 +61,9 @@ $(document).ready(function(){
     	
 
     	 //Callback Function
-        function getBarChart(json) {
-				//if(json !== undefined ) $('#chart').json2html(json, transforms.barChart);
+        function getBarChart(json) {  
+			console.log(json);  
+				//$('#chart').json2html(json);
 		}
 
 		getBarChart({'groups':[

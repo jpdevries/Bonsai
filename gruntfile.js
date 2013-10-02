@@ -97,10 +97,10 @@ module.exports = function(grunt) {
 		},
 		scss: {
 			files: '<%= dirs.scss %>**/*.scss',  
-			tasks: ['sass:dev','growl:sass']
+			tasks: ['asciify','sass:dev','growl:sass']
 		},
 		script: {
-			files: [ '<%= dirs.js %>main.js', '<%= dirs.js %>plugins.js', '<%= dirs.js %>vendor/bonsai.js' ],
+			files: [ '<%= dirs.js %>**/*.js', '<%= dirs.src %>**/*.js', '!<%= dirs.js %>**/*min.js', '!<%= dirs.src %>**/*min.js', ],
 			tasks: [ 'asciify','concat:script','uglify','growl:js' ]
 		}
 	},
