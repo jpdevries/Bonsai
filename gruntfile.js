@@ -3,7 +3,8 @@ module.exports = function(grunt) {
   grunt.initConfig({
     pkg: grunt.file.readJSON('package.json'),
 	dirs: { /* just defining some properties */
-		lib: './lib',
+		lib: './lib/',
+		src:'./src/',
 		assets: './demo/assets/',
 		scss: './_build/sass/',
 		js: '<%= dirs.assets %>js/',
@@ -30,7 +31,8 @@ module.exports = function(grunt) {
 				
 			},
 			files: {
-				'<%= dirs.js %>main-dev.js' : ['<%= dirs.js %>plugins.js','<%= dirs.js %>vendor/json2html.js','<%= dirs.js %>vendor/jquery.json2html.js','<%= dirs.js %>vendor/bonsai.js','<%= dirs.js %>main.js'] 
+				'<%= dirs.src %>bonsai.js' : ['<%= dirs.src %>vendor/jquery.json2html.js','<%= dirs.src %>bonsai.sap.js'],
+				'<%= dirs.js %>main-dev.js' : ['<%= dirs.js %>plugins.js','<%= dirs.js %>main.js'] 
 			}
 		}
 	},
@@ -39,10 +41,15 @@ module.exports = function(grunt) {
 			files: [
 				{expand:true,cwd:'./bower_components/font-awesome/css/',src:['font-awesome-ie7.css'], dest: '<%= dirs.css %>'},
 				{expand:true,cwd:'./bower_components/font-awesome/font/',src:['*'],dest: './assets/font/'},
-				{src: '<%= dirs.lib %>jquery/jquery.js', dest: '<%= dirs.js %>vendor/jquery.js'},
-				{src: '<%= dirs.lib %>modernizr/modernizr.js', dest: '<%= dirs.js %>vendor/modernizr.dev.js'},
-				{src: '<%= dirs.lib %>requirejs/require.js', dest: '<%= dirs.js %>vendor/require.js'},
+				{src: '<%= dirs.lib %>jquery/jquery.js', dest: '<%= dirs.src %>vendor/jquery.js'},
+				{src: '<%= dirs.lib %>modernizr/modernizr.js', dest: '<%= dirs.src %>vendor/modernizr.dev.js'},
+				{src: '<%= dirs.lib %>requirejs/require.js', dest: '<%= dirs.src %>vendor/require.js'},
 				{src: 'bourbon/**/*',cwd: '<%= dirs.lib %>',dest: '<%= dirs.scss %>',expand: true}
+			]
+		},
+		bonsai: {
+			files: [
+				{expand:true,cwd:'<%= dirs.src %>',src:['bonsai.js','bonsai.min.js'], dest: '<%= dirs.js %>vendor/'},
 			]
 		}
 	},
@@ -51,9 +58,13 @@ module.exports = function(grunt) {
         banner: '/*!\n<%= asciify_myBanner %> */\n\n'
       },
       build: {
+		src: '<%= dirs.src %>bonsai.js',
+		dest: '<%= dirs.src %>bonsai.min.js'
+      },
+	  demo: {
 		src: '<%= dirs.js %>main-dev.js',
 		dest: '<%= dirs.js %>main-min.js'
-      }
+	}
     },
   sass: {                              
     dist: {                            
@@ -128,6 +139,6 @@ module.exports = function(grunt) {
 
   // Tasks
   grunt.registerTask('default', ['sass:dev','growl:sass','concat','uglify','growl:js','watch','growl:watch']);
-  grunt.registerTask('build', ['clean:prebuild','bower','copy','asciify','sass:dev','growl:sass','concat','uglify','growl:js','clean:build','growl:build']);
+  grunt.registerTask('build', ['clean:prebuild','bower','copy:main','asciify','sass:dev','growl:sass','concat','uglify','growl:js','clean:build','copy:bonsai','growl:build']);
   grunt.registerTask('prod',['asciify','sass:dist','growl:sass','concat','uglify','growl:js']);
 };
