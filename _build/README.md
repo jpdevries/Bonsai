@@ -38,7 +38,7 @@ Installing Grunt & Grunt Packages
 First, clone a copy of this git repo by running:
 
 ```bash
-git clone -b develop git://github.com/jpdevries/bonsai.git
+git clone git://github.com/jpdevries/Bonsai.git
 ```
 
 Install the [grunt-cli](http://gruntjs.com/getting-started#installing-the-cli) package if you haven't before. This should be done as global installs:
@@ -56,7 +56,7 @@ grunt --version
 Enter the project directory and install the Node dependencies, this time *without* specifying a global(-g) install:
 
 ```bash
-cd bonsai
+cd Bonsai
 npm install
 ```
 _Note: `npm install` updates dependencies and should be run whenever you pull from git._
