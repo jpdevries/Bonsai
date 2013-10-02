@@ -4,8 +4,8 @@ module.exports = function(grunt) {
     pkg: grunt.file.readJSON('package.json'),
 	dirs: { /* just defining some properties */
 		lib: './lib',
-		assets: './assets/',
-		scss: '<%= dirs.assets %>sass/',
+		assets: './demo/assets/',
+		scss: './_build/sass/',
 		js: '<%= dirs.assets %>js/',
 		css: '<%= dirs.assets %>css/',
 	},
@@ -39,9 +39,9 @@ module.exports = function(grunt) {
 			files: [
 				{expand:true,cwd:'./bower_components/font-awesome/css/',src:['font-awesome-ie7.css'], dest: '<%= dirs.css %>'},
 				{expand:true,cwd:'./bower_components/font-awesome/font/',src:['*'],dest: './assets/font/'},
-				{src: './lib/jquery/jquery.js', dest: '<%= dirs.js %>vendor/jquery.js'},
-				{src: './lib/modernizr/modernizr.js', dest: '<%= dirs.js %>vendor/modernizr.dev.js'},
-				{src: './lib/requirejs/require.js', dest: '<%= dirs.js %>vendor/require.js'},
+				{src: '<%= dirs.lib %>jquery/jquery.js', dest: '<%= dirs.js %>vendor/jquery.js'},
+				{src: '<%= dirs.lib %>modernizr/modernizr.js', dest: '<%= dirs.js %>vendor/modernizr.dev.js'},
+				{src: '<%= dirs.lib %>requirejs/require.js', dest: '<%= dirs.js %>vendor/require.js'},
 				{src: 'bourbon/**/*',cwd: '<%= dirs.lib %>',dest: '<%= dirs.scss %>',expand: true}
 			]
 		}
