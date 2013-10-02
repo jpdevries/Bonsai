@@ -6,6 +6,7 @@ module.exports = function(grunt) {
 		lib: './lib/',
 		src:'./src/',
 		assets: './demo/assets/',
+		font: '<%= dirs.assets %>font',
 		scss: './_build/sass/',
 		js: '<%= dirs.assets %>js/',
 		css: '<%= dirs.assets %>css/',
@@ -40,7 +41,7 @@ module.exports = function(grunt) {
 		main: {
 			files: [
 				{expand:true,cwd:'./bower_components/font-awesome/css/',src:['font-awesome-ie7.css'], dest: '<%= dirs.css %>'},
-				{expand:true,cwd:'./bower_components/font-awesome/font/',src:['*'],dest: './assets/font/'},
+				{expand:true,cwd:'./bower_components/font-awesome/font/',src:['*'],dest: '<%= dirs.font %>'},
 				{src: '<%= dirs.lib %>jquery/jquery.js', dest: '<%= dirs.src %>vendor/jquery.js'},
 				{src: '<%= dirs.lib %>modernizr/modernizr.js', dest: '<%= dirs.src %>vendor/modernizr.dev.js'},
 				{src: '<%= dirs.lib %>requirejs/require.js', dest: '<%= dirs.src %>vendor/require.js'},
