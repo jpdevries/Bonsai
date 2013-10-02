@@ -138,7 +138,7 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-growl');
 
   // Tasks
-  grunt.registerTask('default', ['sass:dev','growl:sass','concat','uglify','growl:js','watch','growl:watch']);
-  grunt.registerTask('build', ['clean:prebuild','bower','copy:main','asciify','sass:dev','growl:sass','concat','uglify','growl:js','clean:build','copy:bonsai','growl:build']);
-  grunt.registerTask('prod',['asciify','sass:dist','growl:sass','concat','uglify','growl:js']);
+  grunt.registerTask('default', ['sass:dist','growl:sass','concat','uglify','growl:js','watch','growl:watch']);
+  grunt.registerTask('build', ['clean:prebuild','bower','copy:main','asciify','sass:dist','growl:sass','concat','uglify','growl:js','clean:build','copy:bonsai','growl:build']);
+  grunt.registerTask('expand',['asciify','sass:dev','growl:sass','concat','growl:js']);
 };
