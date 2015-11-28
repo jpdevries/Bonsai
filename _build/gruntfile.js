@@ -5,9 +5,9 @@ module.exports = function(grunt) {
 	dirs: { /* just defining some properties */
 		lib: './lib/',
 		src:'./src/',
-		assets: './demo/assets/',
+		assets: '../demo/assets/',
 		font: '<%= dirs.assets %>font',
-		scss: './_build/sass/',
+		scss: './sass/',
 		js: '<%= dirs.assets %>js/',
 		css: '<%= dirs.assets %>css/',
 	},
